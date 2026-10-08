@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff8f2" />
+  <meta name="description" content="Tu espacio para crear invitaciones, personalizar cada detalle y celebrar a tu manera." />
+  <title>Lumimila · Invitaciones hechas por ti</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23F88C80'/%3E%3Cpath d='M20 6l3 10 11 4-11 3-3 11-4-11-10-3 10-4z' fill='%23FFC765'/%3E%3C/svg%3E" />
+  <link rel="preload" href="./assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="./assets/fraunces.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="modal"></dialog>
+  <input type="file" id="image-upload" accept="image/png,image/jpeg,image/webp" hidden />
+  <input type="file" id="design-import" accept="application/json,.json" hidden />
+  <input type="file" id="font-upload" accept=".ttf,.otf,font/ttf,font/otf" multiple hidden />
+  <input type="file" id="audio-upload" accept=".mp3,.wav,.m4a,.aac,.ogg,audio/*" multiple hidden />
+</body>
+</html>

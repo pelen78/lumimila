@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {encodeWav,inspectWav,validateAudioSettings,importAudio,exportAudio,SAMPLE_RATE} from '../dist/audio.mjs';
-import {birthday,validateDesign,customerCopy} from '../dist/core.mjs';
-import {drawEffect} from '../dist/motion.mjs';
+import {encodeWav,inspectWav,validateAudioSettings,importAudio,exportAudio,SAMPLE_RATE} from '../dist/estudio/audio.mjs';
+import {birthday,validateDesign,customerCopy} from '../dist/estudio/core.mjs';
+import {drawEffect} from '../dist/estudio/motion.mjs';
 const ref=(digit='a')=>({id:'lumiaudio_'+digit.repeat(64),name:'Mi audio',duration:15,volume:.8});
 test('Audio is normalized to a bounded 15-second mono WAV with clipped PCM',()=>{
   const samples=new Float32Array(SAMPLE_RATE*18);samples.set([2,-2,0,.5]);const wav=encodeWav(samples),v=new DataView(wav.buffer);

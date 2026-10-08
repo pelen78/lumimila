@@ -1,11 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {inspectFont,MAX_FONT_BYTES,validateFontRefs,ensureDesignFonts,exportFonts,importFonts,syncFontRefs} from '../dist/fonts.mjs';
-import {birthday,customerCopy,validateDesign,renderDesign} from '../dist/core.mjs';
+import {inspectFont,MAX_FONT_BYTES,validateFontRefs,ensureDesignFonts,exportFonts,importFonts,syncFontRefs} from '../dist/estudio/fonts.mjs';
+import {birthday,customerCopy,validateDesign,renderDesign} from '../dist/estudio/core.mjs';
 const id='lumifont_'+'a'.repeat(64);
 test('Real TTF files are accepted; invalid files and overflowing font tables are rejected',async()=>{
-  const bytes=new Uint8Array(await readFile(new URL('../dist/assets/dm-sans.ttf',import.meta.url)));
+  const bytes=new Uint8Array(await readFile(new URL('../dist/estudio/assets/dm-sans.ttf',import.meta.url)));
   assert.equal(inspectFont(bytes),'ttf');
   assert.throws(()=>inspectFont(new TextEncoder().encode('This is not a font.')));
   const damaged=bytes.slice();new DataView(damaged.buffer).setUint32(20,0xffffffff);assert.throws(()=>inspectFont(damaged));
@@ -43,6 +43,6 @@ test('All selected font weights finish loading before rendering can proceed',asy
 test('Malformed portable font payloads cannot load remote URLs or impersonate another font',async()=>{
   const d=birthday();d.fonts=[{id,name:'Example'}];d.elements[1].font=id;
   await assert.rejects(importFonts([{id,name:'Example',data:'https://example.com/font.ttf'}],d),/no es válida/);
-  const bytes=await readFile(new URL('../dist/assets/dm-sans.ttf',import.meta.url));
+  const bytes=await readFile(new URL('../dist/estudio/assets/dm-sans.ttf',import.meta.url));
   await assert.rejects(importFonts([{id,name:'Example',data:'data:font/ttf;base64,'+bytes.toString('base64')}],d),/dañada/);
 });

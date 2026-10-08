@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {birthday,blank,clone,prepareDesignRenderer,renderDesign} from '../dist/core.mjs';
-import {textEntranceTimeline} from '../dist/motion.mjs';
+import {birthday,blank,clone,prepareDesignRenderer,renderDesign} from '../dist/estudio/core.mjs';
+import {textEntranceTimeline} from '../dist/estudio/motion.mjs';
 
 test('Text entrances require an effect, independent of whether audio is selected',()=>{
   for(const audio of [null,{id:'selected-track'}]){

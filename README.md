@@ -36,6 +36,14 @@ En «Mis diseños» se pueden guardar plantillas y exportar/importar copias JSON
 
 Esta es una primera versión privada para probar el editor. No tiene todavía cuentas, almacenamiento compartido en un servidor, validación de compras, códigos de acceso, pagos ni integración con Etsy. «Vista del cliente» es una vista de prueba dentro del editor, no un portal protegido por cuenta. Antes de vender a compradores reales se necesita implementar ese backend y separar el panel administrativo. El dominio propio no está configurado.
 
+## Estructura del sitio
+
+- `dist/index.html`: portada pública de lumimila.net (más adelante, el catálogo).
+- `dist/assets/`: logo y tipografías que usa la portada.
+- `dist/estudio/`: el editor. En producción, `lumimila.net/estudio/` está protegido con Cloudflare Access (código por correo).
+
+Publicación: Cloudflare Pages, proyecto `lumimila`, rama `main`, sin comando de build, carpeta de salida `dist`. Cada cambio en `main` se publica solo.
+
 ## Ejecutar en otro hosting o equipo
 
 No necesita instalar dependencias ni compilar. Sube el contenido de `dist/` a cualquier hosting estático con HTTPS. Para ejecutar localmente con Node.js:
@@ -44,7 +52,7 @@ No necesita instalar dependencias ni compilar. Sube el contenido de `dist/` a cu
 node server.mjs
 ```
 
-Abre http://127.0.0.1:4173/. Para ejecutar las pruebas:
+Abre http://127.0.0.1:4173/ para la portada y http://127.0.0.1:4173/estudio/ para el editor. Para ejecutar las pruebas:
 
 ```sh
 npm test

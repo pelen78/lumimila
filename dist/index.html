@@ -4,21 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#fff8f2" />
-  <meta name="description" content="Tu espacio para crear invitaciones, personalizar cada detalle y celebrar a tu manera." />
+  <meta name="description" content="Invitaciones ilustradas que tú personalizas. Muy pronto en Lumimila." />
+  <meta property="og:title" content="Lumimila · Invitaciones hechas por ti" />
+  <meta property="og:description" content="Invitaciones ilustradas que tú personalizas. Muy pronto." />
+  <meta property="og:url" content="https://lumimila.net/" />
+  <meta property="og:type" content="website" />
   <title>Lumimila · Invitaciones hechas por ti</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23F88C80'/%3E%3Cpath d='M20 6l3 10 11 4-11 3-3 11-4-11-10-3 10-4z' fill='%23FFC765'/%3E%3C/svg%3E" />
-  <link rel="preload" href="./assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="preload" href="./assets/fraunces.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="stylesheet" href="./styles.css" />
-  <script type="module" src="./app.mjs"></script>
+  <style>
+    @font-face{font-family:"Fraunces";src:url("./assets/fraunces.ttf") format("truetype");font-display:swap}
+    @font-face{font-family:"DM Sans";src:url("./assets/dm-sans.ttf") format("truetype");font-display:swap}
+    :root{--coral:#F88C80;--oro:#FFC765;--beige:#BEB2A6;--gris:#606060;--fondo:#fff8f2;--tinta:#3f3a37}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--fondo);color:var(--tinta);font-family:"DM Sans",system-ui,sans-serif;padding:32px 16px}
+    main{max-width:560px;text-align:center}
+    .logo{width:min(320px,80vw);height:auto}
+    .eyebrow{margin:36px 0 10px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gris)}
+    h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(30px,6vw,44px);line-height:1.12;margin:0 0 16px}
+    p{font-size:17px;line-height:1.6;color:var(--gris);margin:0 auto;max-width:440px}
+    .pill{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:10px 18px;border-radius:999px;background:#fff;border:1px solid #f1e3d8;font-size:14px;color:var(--tinta)}
+    .pill i{width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px #fde3df}
+    .stars{color:var(--oro);letter-spacing:10px;margin-top:40px;font-size:14px}
+  </style>
 </head>
 <body>
-  <div id="app"></div>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <dialog id="modal"></dialog>
-  <input type="file" id="image-upload" accept="image/png,image/jpeg,image/webp" hidden />
-  <input type="file" id="design-import" accept="application/json,.json" hidden />
-  <input type="file" id="font-upload" accept=".ttf,.otf,font/ttf,font/otf" multiple hidden />
-  <input type="file" id="audio-upload" accept=".mp3,.wav,.m4a,.aac,.ogg,audio/*" multiple hidden />
+  <main>
+    <img class="logo" src="./assets/lumimila-logo-web.svg" alt="Lumimila, Clipart &amp; Illustrations" />
+    <div class="eyebrow">Invitaciones hechas por ti</div>
+    <h1>Cada celebración merece una invitación especial.</h1>
+    <p>Muy pronto vas a encontrar aquí invitaciones ilustradas que podrás personalizar con tus datos, tu música y un toque de animación.</p>
+    <div class="pill"><i></i>Estamos preparando el catálogo</div>
+    <div class="stars" aria-hidden="true">✦ ✦ ✦</div>
+  </main>
 </body>
 </html>
