@@ -303,6 +303,13 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
   footer .links{align-items:flex-start}
   .art .note{font-size:1.25rem}
 }
+@media (max-width:420px){
+  .top .wrap{flex-wrap:wrap;justify-content:center;gap:4px;padding-top:10px}
+  .top .brand{margin-inline:auto}
+  .brand img{height:46px}
+  nav.main{flex-basis:100%;justify-content:center;gap:24px;margin-left:0}
+  #inicio,[data-page]{scroll-margin-top:112px}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   [data-reveal]{opacity:1;transform:none}
@@ -355,6 +362,7 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     <nav class="main" aria-label="Principal">
       <a href="#clipart">Clipart</a>
       <a href="#invitaciones">Invitaciones</a>
+      <a href="#tarjetas">Tarjetas</a>
     </nav>
   </div>
 </header>
@@ -423,6 +431,21 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     </div>
   </section>
 
+  <section class="catalog-page" id="tarjetas" data-page="tarjetas" aria-labelledby="cards-title" hidden>
+    <div class="wrap">
+      <div class="catalog-heading">
+        <div><span class="eyebrow">Un detalle para alguien especial</span><h1 id="cards-title">Tarjetas</h1></div>
+      </div>
+      <div class="invitation-soon">
+        <img src="./assets/mila-avatar.svg" alt="Mila" width="85" height="85">
+        <span class="construction-label">En construcción</span>
+        <h2>Estamos preparando un detalle bonito.</h2>
+        <p>Aquí encontrarás tarjetas de regalo personalizables con nombres. Por ahora, esta sección está en preparación y no hay modelos disponibles.</p>
+        <a class="btn primary" href="#clipart">Explorar clipart →</a>
+      </div>
+    </div>
+  </section>
+
   <section class="product-page" id="clipart/cute-halloween" data-page="clipart/cute-halloween" aria-labelledby="product-title" hidden>
     <div class="wrap">
       <a class="product-back" href="#clipart">← Volver a clipart</a>
@@ -468,6 +491,7 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     <div class="links">
       <a href="#clipart">Clipart</a>
       <a href="#invitaciones">Invitaciones</a>
+      <a href="#tarjetas">Tarjetas</a>
       <button class="again" id="replay" type="button">↺ Volver a ver la intro</button>
     </div>
   </div>
@@ -608,6 +632,7 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     inicio: 'Lumimila · Clipart e invitaciones ilustradas',
     clipart: 'Clipart · Lumimila',
     invitaciones: 'Invitaciones · Lumimila',
+    tarjetas: 'Tarjetas · Lumimila',
     'clipart/cute-halloween': 'Cute Halloween · Lumimila'
   };
   function showPage({focus = false} = {}) {
