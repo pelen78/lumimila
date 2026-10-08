@@ -187,7 +187,7 @@ header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--b
 .top .wrap{display:flex;align-items:center;gap:30px;min-height:84px}
 .brand img{height:52px;width:auto}
 nav.main{display:flex;gap:28px;margin-left:auto}
-nav.main a{text-decoration:none;font-size:.98rem;position:relative;padding:4px 0}
+nav.main a{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap;text-decoration:none;font-size:.98rem;position:relative;padding:4px 0}
 nav.main a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;border-radius:3px;background:var(--oro);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.6,0,.2,1)}
 nav.main a:hover::after{transform:none}
 
@@ -237,7 +237,7 @@ nav.main a:hover::after{transform:none}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* ================= SECCIONES ================= */
-section.block{padding:80px 0;border-top:1px solid var(--line)}
+section.block{scroll-margin-top:84px;padding:80px 0;border-top:1px solid var(--line)}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
 .section-head h2{font-size:clamp(2rem,3.6vw,3rem)}
 .section-head p{color:var(--muted);max-width:44ch}
@@ -310,14 +310,6 @@ section.block{padding:80px 0;border-top:1px solid var(--line)}
 .perk b{display:block;font-family:var(--f-display);font-size:1.15rem;font-weight:600}
 .perk span{color:var(--muted);font-size:.84rem}
 
-/* Cómo funciona */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px;counter-reset:s}
-.step{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:30px 26px 26px}
-.step .num{width:52px;height:52px;border-radius:50%;border:2px solid var(--coral);color:var(--coral-deep);display:grid;place-items:center;font-family:var(--f-display);font-size:1.4rem;font-weight:600;transition:background .3s,color .3s}
-.step:hover .num{background:var(--coral);color:#fff}
-.step h3{font-size:1.4rem;margin-top:18px}
-.step p{color:var(--muted);margin-top:8px;font-size:.95rem}
-.step .hand{position:absolute;right:20px;top:22px;font-size:1.3rem;transform:rotate(4deg)}
 
 /* Footer */
 footer.site{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--panel)}
@@ -331,16 +323,14 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
   .hero,.feature,.studio{grid-template-columns:1fr}
   .hero{padding-top:40px;min-height:0}
   .art{max-width:420px}
-  .steps{grid-template-columns:1fr}
   .perks{grid-template-columns:1fr 1fr 1fr}
-  nav.main{display:none}
-  .top .btn{margin-left:auto}
 }
 @media (max-width:600px){
   .wrap{padding:0 16px}
   .top .wrap{min-height:70px;gap:12px}
   .brand img{height:40px}
-  .top .btn{padding:8px 14px;font-size:.8rem}
+  nav.main{gap:18px}
+  nav.main a{font-size:.9rem}
   section.block{padding:60px 0}
   .uses{grid-template-columns:1fr}
   .perks{grid-template-columns:1fr}
@@ -400,12 +390,9 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
   <div class="wrap">
     <a class="brand" href="#inicio"><img src="./assets/lumimila-logo-web.svg" alt="Lumimila, Clipart &amp; Illustrations"></a>
     <nav class="main" aria-label="Principal">
-      <a href="#catalogo">Catálogo</a>
       <a href="#clipart">Clipart</a>
       <a href="#invitaciones">Invitaciones</a>
-      <a href="#como-funciona">Cómo funciona</a>
     </nav>
-    <a class="btn primary small" href="https://www.etsy.com/listing/4590835991/halloween-clipart-bundle-30-transparent" target="_blank" rel="noopener">Tienda en Etsy ↗</a>
   </div>
 </header>
 
@@ -458,7 +445,7 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     <div class="wrap">
       <div class="section-head" data-reveal>
         <h2>Colección <span class="mark"><svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 6 C 25 2, 50 9, 98 4"/></svg>destacada</span></h2>
-        <p>Ya disponible en Etsy, lista para descargar.</p>
+        <p>Compra y descarga esta colección en Etsy.</p>
       </div>
       <div class="feature">
         <div class="gallery" data-reveal>
@@ -546,20 +533,6 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     </div>
   </section>
 
-  <!-- Cómo funciona -->
-  <section class="block" id="como-funciona" aria-labelledby="how-h">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <h2 id="how-h">Así de <span class="mark"><svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 6 C 25 2, 50 9, 98 4"/></svg>fácil</span></h2>
-        <p>Tu invitación lista en minutos, sin programas complicados.</p>
-      </div>
-      <div class="steps">
-        <div class="step" data-reveal><span class="hand">¡tú eliges!</span><div class="num">1</div><h3>Elige tu plantilla</h3><p>Encuentra el diseño ilustrado que va con tu fiesta.</p></div>
-        <div class="step" data-reveal style="transition-delay:.1s"><span class="hand">fácil ✓</span><div class="num">2</div><h3>Personalízala</h3><p>Escribe tus datos, escoge el estilo de letra, la animación y la música.</p></div>
-        <div class="step" data-reveal style="transition-delay:.2s"><span class="hand">¡a festejar!</span><div class="num">3</div><h3>Compártela</h3><p>Descarga tu video, imagen o PDF y mándala a tus invitados.</p></div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer class="site">
@@ -570,8 +543,8 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
       <p>© 2026 Lumimila. Todos los derechos reservados.</p>
     </div>
     <div class="links">
-      <a href="https://www.etsy.com/listing/4590835991/halloween-clipart-bundle-30-transparent" target="_blank" rel="noopener">Tienda en Etsy ↗</a>
-      <a href="#catalogo">Catálogo</a>
+      <a href="#clipart">Clipart</a>
+      <a href="#invitaciones">Invitaciones</a>
       <button class="again" id="replay" type="button">↺ Volver a ver la intro</button>
     </div>
   </div>
@@ -739,7 +712,7 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     if (it.img) thumb = `<img src="${it.img}" alt="${it.title}, vista previa" loading="lazy" width="900" height="900">`;
     else if (it.invite) thumb = `<div class="invite" style="background-image:url('./assets/home/invitacion-fiesta.webp');background-position:center 30%"><div class="lines" style="top:12%;bottom:40%"><span class="l l1">¡Ven a celebrar!</span><span class="l l2">Mateo</span><span class="l l3">Mis 5 años</span></div></div>`;
     else thumb = `<div class="ph ${it.ph}">${icon[it.icon]}</div>`;
-    const action = it.soon ? '<span class="soon-pill">Muy pronto</span>' : `<a class="btn primary small" href="${it.href}" target="_blank" rel="noopener">Ver en Etsy ↗</a>`;
+    const action = it.soon ? '<span class="soon-pill">Muy pronto</span>' : `<a class="btn primary small" href="${it.href}" target="_blank" rel="noopener">Comprar en Etsy ↗</a>`;
     el.innerHTML = `<div class="thumb">${thumb}<span class="${kindCls}">${it.kind}</span></div><h3>${it.title}</h3><p class="meta">${it.meta}</p><div class="row">${action}</div>`;
     return el;
   }
