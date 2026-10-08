@@ -75,14 +75,19 @@ export function fitText(ctx,e) {
   do {ctx.font=`${e.weight} ${size}px "${e.font}"`;lines=wrapText(ctx,e.text,e.w);if(lines.length*size*1.2<=e.h || size<=6)break;size-=.5;}while(size>=6);
   return {size,lines};
 }
-export async function renderDesign(canvas,design,scale=2) {
+// Load fonts and images once, then draw synchronous frames with optional text motion.
+export async function prepareDesignRenderer(design,scale=2) {
   await ensureDesignFonts(design);
   const prepared=await Promise.all([design.backgroundImage?loadImage(design.backgroundImage):null,...design.elements.map(e=>e.type==='image'?loadImage(e.src):null)]);
-  const ctx=canvas.getContext('2d');canvas.width=W*scale;canvas.height=H*scale;ctx.scale(scale,scale);
+  return (ctx,textTransform=null)=>{
+  ctx.save();ctx.scale(scale,scale);
   ctx.fillStyle=design.background;ctx.fillRect(0,0,W,H);
   if(prepared[0])ctx.drawImage(prepared[0],0,0,W,H);
   for(let i=0;i<design.elements.length;i++){
-    const e=design.elements[i];ctx.save();
+    const e=design.elements[i],motion=e.type==='text'?textTransform?.(e):null;
+    if(motion?.opacity===0)continue;
+    ctx.save();
+    if(motion){ctx.globalAlpha*=motion.opacity;ctx.translate(0,motion.offsetY);}
     if(e.type==='image'){ctx.drawImage(prepared[i+1],e.x,e.y,e.w,e.h);}
     else if(e.type==='text'){
       const {size,lines}=fitText(ctx,e);ctx.fillStyle=e.color;ctx.textAlign=e.align;ctx.textBaseline='middle';
@@ -99,6 +104,12 @@ export async function renderDesign(canvas,design,scale=2) {
     }
     ctx.restore();
   }
+  ctx.restore();
+  };
+}
+export async function renderDesign(canvas,design,scale=2) {
+  const draw=await prepareDesignRenderer(design,scale);
+  canvas.width=W*scale;canvas.height=H*scale;draw(canvas.getContext('2d'));
   return canvas;
 }
 export function jpegToPdf(jpegBytes,pixelW,pixelH) {
