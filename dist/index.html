@@ -15,7 +15,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23F88C80'/%3E%3Cpath d='M20 6l3 10 11 4-11 3-3 11-4-11-10-3 10-4z' fill='%23FFC765'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Fredoka:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fredoka:wght@400;500;600;700&display=swap">
 <script>
 (() => {
   const url = new URL(location.href);
@@ -41,7 +41,7 @@
   --f-display:"Fredoka","DM Sans",system-ui,sans-serif;
   --f-serif:"Fraunces",Georgia,serif;
   --f-body:"DM Sans",system-ui,sans-serif;
-  --f-hand:"Patrick Hand","Bradley Hand",cursive;
+  --f-hand:"Caveat","Bradley Hand",cursive;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:auto}
@@ -58,7 +58,7 @@ h1,h2,h3{font-family:var(--f-display);font-weight:600;margin:0;line-height:1.08;
 p{margin:0}
 .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
 .eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
-.hand{font-family:var(--f-hand);font-weight:400;color:var(--coral-deep);line-height:1.1}
+.hand{font-family:var(--f-hand);font-weight:700;color:var(--coral-deep);line-height:1.1}
 
 /* Trazos a mano */
 .mark{position:relative;display:inline-block;white-space:nowrap;isolation:isolate}
@@ -94,7 +94,7 @@ html.intro-on body::after{opacity:.12}
 .mila-profile h2{font-family:var(--f-display);font-size:2.5rem;font-weight:500;letter-spacing:-.02em;color:#64534a}
 .mila-status{display:flex;align-items:center;gap:7px;font-size:.88rem;margin:4px 0 3px;color:#7d7267;min-width:125px}
 .mila-status i{width:7px;height:7px;border-radius:50%;background:#75a58a}
-.mila-subtitle{font-family:var(--f-hand);font-size:1.3rem;color:#a57863;line-height:1.2}
+.mila-subtitle{font-family:var(--f-hand);font-weight:700;font-size:1.3rem;color:#a57863;line-height:1.2}
 .messenger{position:relative;width:100%;background:#fffdfa;border:1px solid #ffffffd9;border-radius:34px;box-shadow:0 24px 70px -25px #9d583d55,0 2px 8px #a2775220,inset 0 0 0 1px #c7ad9638;overflow:hidden;animation:chat-window-in .6s cubic-bezier(.22,1,.36,1) .12s backwards}
 .conversation{display:flex;flex-direction:column;align-items:flex-start;gap:10px;height:292px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#e8cab9 transparent;padding:24px 32px 14px;scroll-behavior:smooth}
 .chat-date{align-self:center;font-size:.68rem;letter-spacing:.08em;color:#9a8b7e;margin-bottom:9px}
@@ -108,7 +108,7 @@ html.intro-on body::after{opacity:.12}
 .typing-dots i{width:6px;height:6px;background:#b9a99b;border-radius:50%;animation:typing-dot 1.2s infinite}
 .typing-dots i:nth-child(2){animation-delay:.16s}.typing-dots i:nth-child(3){animation-delay:.32s}
 .reply-area{padding:4px 32px 24px}
-.reply-caption{font-family:var(--f-hand);font-size:1.3rem;color:#b58068;display:flex;align-items:center;gap:12px;margin:0 0 13px}
+.reply-caption{font-family:var(--f-hand);font-weight:700;font-size:1.3rem;color:#b58068;display:flex;align-items:center;gap:12px;margin:0 0 13px}
 .reply-caption::before,.reply-caption::after{content:"";height:1px;flex:1;background:#e5cdbd80}
 .reply-options{display:flex;justify-content:center;visibility:hidden}
 .reply-options.is-ready{visibility:visible}
@@ -128,7 +128,7 @@ html.intro-on body::after{opacity:.12}
   .intro-reply:not(:disabled):hover .reply-label{transform:translateX(2px)}
 }
 .reply-hint{text-align:center;font-size:.7rem;color:#a08b7e;margin-top:17px;min-height:18px}
-.intro-foot{font-family:var(--f-hand);text-align:center;font-size:1.05rem;color:#9d715e}
+.intro-foot{font-family:var(--f-hand);font-weight:700;text-align:center;font-size:1.05rem;color:#9d715e}
 .intro-foot span{color:#d18c77;margin-left:5px}
 /* Original implementation inspired by the visible Motion iris demo. */
 .brand-reveal{position:fixed;inset:0;z-index:2;pointer-events:none}
@@ -210,7 +210,7 @@ nav.main a:hover::after{transform:none}
 .card-mini.c2{width:38%;left:31%;top:10%;transform:rotate(3deg);z-index:4}
 .card-mini.c3{width:40%;left:56%;top:42%;transform:rotate(7deg);z-index:2}
 .card-mini .tag{position:absolute;left:10px;top:10px;background:rgba(255,253,249,.92);border-radius:999px;padding:3px 10px;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-.art .note{position:absolute;font-family:var(--f-hand);font-weight:400;font-size:1.55rem;white-space:nowrap;line-height:1}
+.art .note{position:absolute;font-family:var(--f-hand);font-weight:700;font-size:1.55rem;white-space:nowrap;line-height:1}
 .art .note.a{left:0;bottom:6%;transform:rotate(-6deg);color:var(--coral-deep)}
 .art .note.b{right:0;top:2%;transform:rotate(5deg);color:#c99a2e}
 .spark{position:absolute;color:var(--oro);animation:twinkle 3.6s ease-in-out infinite}
