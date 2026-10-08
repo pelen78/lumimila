@@ -184,8 +184,9 @@ html.intro-on body::after{opacity:.12}
 
 /* ================= HEADER ================= */
 header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;gap:30px;min-height:84px}
-.brand img{height:52px;width:auto}
+.top .wrap{display:flex;align-items:center;gap:30px;min-height:116px;padding-top:10px;padding-bottom:10px}
+.top .brand{display:block;flex:0 0 auto}
+.brand img{width:280px;height:auto}
 nav.main{display:flex;gap:28px;margin-left:auto}
 nav.main a{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap;text-decoration:none;font-size:.98rem;position:relative;padding:4px 0}
 nav.main a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;border-radius:3px;background:var(--oro);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.6,0,.2,1)}
@@ -193,7 +194,6 @@ nav.main a:hover::after{transform:none}
 
 /* ================= HERO ================= */
 .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:64px 0 70px;min-height:560px}
-.hero .eyebrow{display:block;margin-bottom:20px}
 .hero h1{font-size:clamp(2.6rem,5.4vw,4.7rem)}
 .hero h1 em{font-style:normal;color:var(--coral-deep);font-weight:600}
 .hero p.lead{color:var(--muted);font-size:1.15rem;max-width:36ch;margin-top:22px}
@@ -216,7 +216,7 @@ nav.main a:hover::after{transform:none}
 .spark{position:absolute;color:var(--oro);animation:twinkle 3.6s ease-in-out infinite}
 
 /* Catálogos separados y fichas de producto. */
-#inicio,[data-page]{scroll-margin-top:84px}
+#inicio,[data-page]{scroll-margin-top:128px}
 [data-page][hidden]{display:none!important}
 nav.main a[aria-current="page"]::after{transform:none}
 .catalog-page,.product-page{padding:48px 0 72px;min-height:65vh}
@@ -295,20 +295,19 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
 }
 @media (max-width:600px){
   .wrap{padding:0 16px}
-  .top .wrap{min-height:70px;gap:12px}
-  .brand img{height:40px}
   nav.main{gap:18px}
   nav.main a{font-size:.9rem}
   footer .wrap{grid-template-columns:1fr}
   footer .links{align-items:flex-start}
   .art .note{font-size:1.25rem}
 }
-@media (max-width:420px){
-  .top .wrap{flex-wrap:wrap;justify-content:center;gap:4px;padding-top:10px}
+@media (max-width:700px){
+  .top .wrap{flex-wrap:wrap;justify-content:center;gap:4px;min-height:0;padding-top:10px;padding-bottom:4px}
   .top .brand{margin-inline:auto}
-  .brand img{height:46px}
+  .brand img{width:clamp(230px,48vw,280px);height:auto}
   nav.main{flex-basis:100%;justify-content:center;gap:24px;margin-left:0}
-  #inicio,[data-page]{scroll-margin-top:112px}
+  nav.main a{font-size:.95rem}
+  #inicio,[data-page]{scroll-margin-top:170px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -372,7 +371,6 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
   <div class="wrap">
     <section class="hero" aria-label="Bienvenida">
       <div data-reveal>
-        <span class="eyebrow">Clipart &amp; ilustraciones · Invitaciones</span>
         <h1>Ilustraciones tiernas para <em><span class="mark"><svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 6 C 25 2, 50 9, 98 4"/></svg>celebrar</span></em> en grande.</h1>
         <p class="lead">Clipart con fondo transparente para tus proyectos y, muy pronto, invitaciones que personalizas con tus datos, tu música y un toque de animación.</p>
         <div class="hand">hecho a mano, con mucho cariño ✦</div>
