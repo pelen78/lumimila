@@ -285,12 +285,44 @@ nav.main a[aria-current="page"]::after{transform:none}
 
 
 /* Footer */
-footer.site{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--panel)}
-footer .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
-footer img{height:64px;width:auto}
-footer p{color:var(--muted);font-size:.9rem;margin-top:10px;max-width:46ch}
-footer .links{display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-size:.92rem}
-footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text-underline-offset:3px}
+footer.site{position:relative;margin-top:12px;padding:48px 0 22px;background:radial-gradient(ellipse at 12% 20%,#fff3d8 0,transparent 48%),linear-gradient(110deg,#fbefe6,#fbe9e4)}
+footer.site::before{content:"";position:absolute;left:0;right:0;top:-9px;height:18px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='18' viewBox='0 0 80 18'%3E%3Cpath d='M0 9Q20 0 40 9T80 9' fill='none' stroke='%23e7b8a4' stroke-width='1.5'/%3E%3C/svg%3E") repeat-x}
+.footer-main{display:grid;grid-template-columns:1.6fr minmax(200px,.65fr);gap:80px;padding:10px 0 38px;align-items:start}
+.footer-intro{display:flex;align-items:flex-start;gap:24px}
+.footer-mila{position:relative;flex:0 0 94px;width:94px;height:94px;display:grid;place-items:center;background:var(--paper);border:1px solid #ead7bc;border-radius:50%;box-shadow:0 8px 20px -16px #a9795c}
+.footer-mila::after{content:"✦";position:absolute;right:-5px;top:0;color:var(--coral);font-size:28px;line-height:1}
+.footer-mila img{width:68px;height:68px}
+.footer-copy h2{font-size:clamp(1.55rem,2.3vw,2rem);max-width:23ch;line-height:1.2;text-wrap:pretty}
+.footer-copy p{color:var(--muted);font-size:.95rem;max-width:39ch;margin-top:12px;line-height:1.6}
+.footer-copy .again{display:inline-flex;align-items:center;gap:9px;min-height:44px;margin-top:16px;padding:7px 15px;border:1px solid #dbc1b0;border-radius:999px;background:#fffdf970;font-size:.83rem;transition:background .2s ease,border-color .2s ease,transform .16s ease}
+.footer-copy .again:active{transform:scale(.97)}
+.footer-nav h2{font-family:var(--f-body);font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin:4px 0 10px}
+.footer-nav .links{display:grid}
+.footer-nav a{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:44px;padding:10px 0;border-bottom:1px solid #e9d8cb;text-decoration:none;font-size:1rem;font-weight:500;transition:color .2s ease}
+.footer-nav a span{color:var(--coral-deep);transition:transform .2s ease}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:21px;border-top:1px dashed #d9bfac}
+.footer-bottom p{font-size:.75rem;color:var(--muted);line-height:1.6}
+.footer-bottom .hand{font-size:1.4rem;color:var(--coral-deep)}
+@media (hover:hover) and (pointer:fine){
+  .footer-copy .again:hover{background:var(--paper);border-color:var(--coral)}
+  .footer-nav a:hover{color:var(--coral-deep)}
+  .footer-nav a:hover span{transform:translateX(4px)}
+}
+@media (max-width:800px){
+  .footer-main{gap:36px;grid-template-columns:1.4fr minmax(160px,.6fr)}
+  .footer-intro{gap:18px}
+  .footer-mila{flex-basis:76px;width:76px;height:76px}
+  .footer-mila img{width:56px;height:56px}
+}
+@media (max-width:600px){
+  footer.site{padding-top:32px}
+  .footer-main{grid-template-columns:1fr;gap:28px;padding-bottom:28px}
+  .footer-intro{display:block}
+  .footer-mila{margin-bottom:20px}
+  .footer-copy h2{max-width:26ch}
+  .footer-nav a{font-size:.95rem;padding:8px 0}
+  .footer-bottom{align-items:flex-start;flex-direction:column;gap:12px}
+}
 
 @media (max-width:980px){
   .hero{grid-template-columns:minmax(0,1fr)}
@@ -301,8 +333,6 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
   .wrap{padding:0 16px}
   nav.main{gap:18px}
   nav.main a{font-size:.9rem}
-  footer .wrap{grid-template-columns:1fr}
-  footer .links{align-items:flex-start}
   .art .note{font-size:1.25rem}
 }
 @media (max-width:700px){
@@ -497,16 +527,27 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
 
 <footer class="site">
   <div class="wrap">
-    <div>
-      <img src="./assets/lumimila-logo-web.svg" alt="Lumimila, Clipart &amp; Illustrations">
-      <p>Ilustraciones originales para celebrar los momentos bonitos. Todas las ilustraciones son diseños de Lumimila.</p>
-      <p>© 2026 Lumimila. Todos los derechos reservados.</p>
+    <div class="footer-main">
+      <div class="footer-intro">
+        <div class="footer-mila" aria-hidden="true"><img src="./assets/mila-avatar.svg" alt="" width="68" height="68"></div>
+        <div class="footer-copy">
+          <h2>Un poquito de imaginación, muchos momentos bonitos.</h2>
+          <p>Ilustraciones originales de Lumimila para darle vida a tus ideas y celebrar a tu manera.</p>
+          <button class="again" id="replay" type="button"><span aria-hidden="true">↺</span> Volver a saludar a Mila</button>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Explora Lumimila">
+        <h2>Explora Lumimila</h2>
+        <div class="links">
+          <a href="#clipart">Clipart <span aria-hidden="true">→</span></a>
+          <a href="#invitaciones">Invitaciones <span aria-hidden="true">→</span></a>
+          <a href="#tarjetas">Tarjetas <span aria-hidden="true">→</span></a>
+        </div>
+      </nav>
     </div>
-    <div class="links">
-      <a href="#clipart">Clipart</a>
-      <a href="#invitaciones">Invitaciones</a>
-      <a href="#tarjetas">Tarjetas</a>
-      <button class="again" id="replay" type="button">↺ Volver a ver la intro</button>
+    <div class="footer-bottom">
+      <p>© <span id="footer-year">2026</span> Lumimila. Todos los derechos reservados.</p>
+      <p class="hand">gracias por crear algo bonito ✦</p>
     </div>
   </div>
 </footer>
@@ -514,6 +555,7 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
 <script>
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
   const store = (k, v) => { try { localStorage.setItem(k, v); } catch (_) { try { sessionStorage.setItem(k, v); } catch (__) {} } };
 
   /* ---------- Intro: conversación, perfil de Mila y apertura iris ---------- */
