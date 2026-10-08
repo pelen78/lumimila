@@ -277,7 +277,7 @@ section.block{scroll-margin-top:84px;padding:80px 0;border-top:1px solid var(--l
 .gallery .main-img:hover{transform:rotate(0)}
 .gallery .main-img img{width:100%;aspect-ratio:1;object-fit:cover;transition:opacity .3s}
 .thumbs{display:flex;gap:10px;margin-top:18px;justify-content:center}
-.thumbs button{width:70px;height:70px;border-radius:12px;overflow:hidden;border:2px solid transparent;opacity:.7;transition:opacity .2s,border-color .2s,transform .2s}
+.thumbs button{width:70px;min-width:0;height:auto;aspect-ratio:1;border-radius:12px;overflow:hidden;border:2px solid transparent;opacity:.7;transition:opacity .2s,border-color .2s,transform .2s}
 .thumbs button img{width:100%;height:100%;object-fit:cover}
 .thumbs button[aria-pressed="true"],.thumbs button:hover{opacity:1;border-color:var(--coral);transform:translateY(-2px)}
 .feature-info .eyebrow{color:#2f9c8c}
@@ -291,25 +291,14 @@ section.block{scroll-margin-top:84px;padding:80px 0;border-top:1px solid var(--l
 .uses li::before{content:"✦";color:var(--oro);font-size:1rem;line-height:1.5}
 .feature-info .note-small{font-size:.82rem;color:var(--muted);margin-top:18px}
 
-/* Invitaciones */
-.studio{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:60px;align-items:center;margin-top:40px}
-.demo{position:relative;max-width:380px;width:100%;justify-self:center}
-.demo .invite{border-radius:16px;box-shadow:var(--shadow)}
-.demo .badge{position:absolute;right:-18px;top:-18px;z-index:2;background:var(--oro);color:#5a4313;width:84px;height:84px;border-radius:50%;display:grid;place-items:center;text-align:center;font-weight:700;font-size:.74rem;line-height:1.15;letter-spacing:.04em;text-transform:uppercase;transform:rotate(10deg);box-shadow:0 10px 18px -10px rgba(140,100,20,.7)}
-.demo .hand{position:absolute;left:-30px;bottom:-34px;font-size:1.5rem;transform:rotate(-5deg)}
-.controls{display:grid;gap:26px}
-.control h3{font-size:1.35rem}
-.control p{color:var(--muted);font-size:.92rem;margin-top:4px}
-.seg{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.seg button{border:1.5px solid var(--line);background:var(--paper);border-radius:12px;padding:10px 16px;font-size:.9rem;font-weight:500;display:flex;align-items:center;gap:8px;transition:border-color .2s,background .2s,transform .2s}
-.seg button:hover{border-color:var(--coral);transform:translateY(-1px)}
-.seg button[aria-pressed="true"]{background:var(--soft);border-color:var(--coral)}
-.seg button i{font-style:normal;color:var(--coral-deep)}
-.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.perk{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}
-.perk b{display:block;font-family:var(--f-display);font-size:1.15rem;font-weight:600}
-.perk span{color:var(--muted);font-size:.84rem}
-
+/* Invitaciones: aviso mientras se prepara esta sección. */
+.invitation-soon{max-width:780px;margin:0 auto;text-align:center;border:1px solid var(--line);border-radius:28px;background:radial-gradient(ellipse at 50% 0%,#fff0d7,transparent 65%),var(--paper);padding:44px 28px;box-shadow:var(--shadow)}
+.invitation-soon img{width:82px;height:82px;margin:0 auto 16px;border-radius:50%;padding:8px;background:#f4e8dc}
+.construction-label{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;border-radius:999px;background:#ffedc9;color:#806136;font-size:.76rem;font-weight:600}
+.construction-label::before{content:"";width:6px;height:6px;border-radius:50%;background:#d5a347}
+.invitation-soon h2{font-size:clamp(1.9rem,4vw,2.7rem);margin:20px auto 16px;max-width:18ch}
+.invitation-soon p{color:var(--muted);max-width:44ch;margin:0 auto;line-height:1.7}
+.invitation-soon .btn{margin-top:26px}
 
 /* Footer */
 footer.site{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--panel)}
@@ -320,10 +309,9 @@ footer .links{display:flex;flex-direction:column;align-items:flex-end;gap:10px;f
 footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text-underline-offset:3px}
 
 @media (max-width:980px){
-  .hero,.feature,.studio{grid-template-columns:1fr}
+  .hero,.feature{grid-template-columns:minmax(0,1fr)}
   .hero{padding-top:40px;min-height:0}
   .art{max-width:420px}
-  .perks{grid-template-columns:1fr 1fr 1fr}
 }
 @media (max-width:600px){
   .wrap{padding:0 16px}
@@ -333,9 +321,6 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
   nav.main a{font-size:.9rem}
   section.block{padding:60px 0}
   .uses{grid-template-columns:1fr}
-  .perks{grid-template-columns:1fr}
-  .demo .badge{right:-6px;top:-14px;width:72px;height:72px;font-size:.66rem}
-  .demo .hand{left:0}
   footer .wrap{grid-template-columns:1fr}
   footer .links{align-items:flex-start}
   .art .note{font-size:1.25rem}
@@ -481,54 +466,12 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
   <!-- Invitaciones -->
   <section class="block" id="invitaciones" aria-labelledby="inv-h">
     <div class="wrap">
-      <div class="section-head" data-reveal>
-        <h2 id="inv-h">Invitaciones con <span class="mark coral"><svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 5 C 30 9, 60 1, 98 6"/></svg>vida</span></h2>
-        <p>Pruébalo aquí: cambia el estilo de letra y la animación, como lo harás con tu propia invitación.</p>
-      </div>
-      <div class="studio">
-        <div class="demo" data-reveal>
-          <span class="badge">Muy<br>pronto</span>
-          <div class="invite play" id="demo" style="background-image:url('./assets/home/invitacion-fiesta.webp')">
-            <canvas id="fx" aria-hidden="true"></canvas>
-            <div class="lines" aria-label="Invitación de ejemplo: ¡Ven a celebrar! Mateo, mis 5 años, sábado 24 de octubre, Jardín de la Alegría">
-              <span class="l l1" style="--i:0">¡Ven a celebrar!</span>
-              <span class="l l2" style="--i:1">Mateo</span>
-              <span class="l l3" style="--i:2">Mis 5 años</span>
-              <span class="l l4" style="--i:3">Sábado 24 de octubre · 4:00 pm</span>
-              <span class="l l5" style="--i:4">Jardín de la Alegría</span>
-            </div>
-          </div>
-          <span class="hand">¡pruébalo! →</span>
-        </div>
-        <div class="controls" data-reveal style="transition-delay:.15s">
-          <div class="control">
-            <h3>1. Elige el estilo de letra</h3>
-            <p>Cada plantilla trae su diseño original y opciones que combinan con la ilustración.</p>
-            <div class="seg" role="group" aria-label="Estilo de letra">
-              <button type="button" data-style="original" aria-pressed="true">Original</button>
-              <button type="button" data-style="elegante" aria-pressed="false">Elegante</button>
-              <button type="button" data-style="divertido" aria-pressed="false">Divertido</button>
-            </div>
-          </div>
-          <div class="control">
-            <h3>2. Dale movimiento</h3>
-            <p>Al elegir una animación, los textos aparecen uno por uno.</p>
-            <div class="seg" role="group" aria-label="Animación">
-              <button type="button" data-fx="sparkle" aria-pressed="true"><i>✦</i>Brillo</button>
-              <button type="button" data-fx="confetti" aria-pressed="false"><i>▰</i>Confeti</button>
-              <button type="button" data-fx="bubbles" aria-pressed="false"><i>◌</i>Burbujas</button>
-              <button type="button" data-fx="none" aria-pressed="false">Sin animación</button>
-            </div>
-          </div>
-          <div class="control">
-            <h3>3. Descárgala como quieras</h3>
-            <div class="perks" style="margin-top:12px">
-              <div class="perk"><b>Video MP4</b><span>15 segundos con música para mandar por WhatsApp</span></div>
-              <div class="perk"><b>PNG</b><span>Imagen en alta calidad para redes</span></div>
-              <div class="perk"><b>PDF</b><span>5 × 7 pulgadas, lista para imprimir</span></div>
-            </div>
-          </div>
-        </div>
+      <div class="invitation-soon" data-reveal>
+        <img src="./assets/mila-avatar.svg" alt="Mila" width="85" height="85">
+        <span class="construction-label">En construcción</span>
+        <h2 id="inv-h">Algo bonito está por llegar.</h2>
+        <p>Estamos preparando nuestras invitaciones personalizables. Este espacio estará disponible más adelante.</p>
+        <a class="btn primary" href="#clipart">Ver clipart disponible →</a>
       </div>
     </div>
   </section>
@@ -732,44 +675,6 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     setTimeout(() => { mainImg.src = b.dataset.src; mainImg.alt = b.dataset.alt; mainImg.style.opacity = 1; }, 180);
   }));
 
-  /* ---------- Demo de invitación ---------- */
-  const demo = document.getElementById('demo');
-  const fx = document.getElementById('fx');
-  const fctx = fx.getContext('2d');
-  let effect = 'sparkle', parts = [], raf = 0, visible = false;
-  function size() { const dpr = Math.min(devicePixelRatio || 1, 2); fx.width = fx.clientWidth * dpr; fx.height = fx.clientHeight * dpr; fctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
-  function seed() {
-    const w = fx.clientWidth, h = fx.clientHeight; const R = Math.random;
-    if (effect === 'sparkle') parts = Array.from({ length: 26 }, () => ({ x: R() * w, y: R() * h, s: 3 + R() * 6, p: R() * 6.28, v: .02 + R() * .03 }));
-    if (effect === 'confetti') parts = Array.from({ length: 46 }, () => ({ x: R() * w, y: -R() * h, s: 5 + R() * 6, r: R() * 6, vr: (R() - .5) * .1, vy: .7 + R() * 1.2, vx: (R() - .5) * .6, c: ['#F88C80', '#FFC765', '#8fd3c8', '#BEB2A6'][(R() * 4) | 0] }));
-    if (effect === 'bubbles') parts = Array.from({ length: 22 }, () => ({ x: R() * w, y: h + R() * h, s: 5 + R() * 14, vy: .35 + R() * .7, p: R() * 6.28 }));
-    if (effect === 'none') parts = [];
-  }
-  function star(x, y, r) { fctx.beginPath(); for (let i = 0; i < 8; i++) { const rr = i % 2 ? r * .35 : r, a = i * Math.PI / 4 - Math.PI / 2; fctx.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); } fctx.closePath(); fctx.fill(); }
-  function tick() {
-    const w = fx.clientWidth, h = fx.clientHeight; fctx.clearRect(0, 0, w, h);
-    for (const p of parts) {
-      if (effect === 'sparkle') { p.p += p.v; fctx.globalAlpha = (Math.sin(p.p) + 1) / 2; fctx.fillStyle = '#FFC765'; star(p.x, p.y, p.s); }
-      if (effect === 'confetti') { p.y += p.vy; p.x += p.vx; p.r += p.vr; if (p.y > h + 10) { p.y = -10; p.x = Math.random() * w; } fctx.save(); fctx.globalAlpha = .9; fctx.translate(p.x, p.y); fctx.rotate(p.r); fctx.fillStyle = p.c; fctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); fctx.restore(); }
-      if (effect === 'bubbles') { p.y -= p.vy; p.p += .03; if (p.y < -20) { p.y = h + 20; p.x = Math.random() * w; } fctx.globalAlpha = .55; fctx.strokeStyle = '#8fd3c8'; fctx.lineWidth = 1.5; fctx.beginPath(); fctx.arc(p.x + Math.sin(p.p) * 6, p.y, p.s, 0, 6.28); fctx.stroke(); fctx.globalAlpha = .35; fctx.fillStyle = '#fff'; fctx.beginPath(); fctx.arc(p.x + Math.sin(p.p) * 6 - p.s * .35, p.y - p.s * .35, p.s * .25, 0, 6.28); fctx.fill(); }
-    }
-    fctx.globalAlpha = 1;
-    if (!reduce && visible && effect !== 'none') raf = requestAnimationFrame(tick);
-  }
-  function restart() { cancelAnimationFrame(raf); size(); seed(); tick(); demo.classList.remove('play'); if (effect !== 'none') { void demo.offsetWidth; demo.classList.add('play'); } }
-  new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) restart(); else cancelAnimationFrame(raf); }).observe(demo);
-  addEventListener('resize', () => { if (visible) restart(); });
-  document.querySelectorAll('[data-fx]').forEach(b => b.addEventListener('click', () => {
-    effect = b.dataset.fx;
-    document.querySelectorAll('[data-fx]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-    restart();
-  }));
-  document.querySelectorAll('[data-style]').forEach(b => b.addEventListener('click', () => {
-    demo.classList.remove('style-original', 'style-elegante', 'style-divertido');
-    demo.classList.add('style-' + b.dataset.style);
-    document.querySelectorAll('[data-style]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-    if (effect !== 'none') { demo.classList.remove('play'); void demo.offsetWidth; demo.classList.add('play'); }
-  }));
 })();
 </script>
 </body>
