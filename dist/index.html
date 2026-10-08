@@ -155,7 +155,6 @@ html.intro-on body::after{opacity:.12}
 @keyframes typing-dot{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-4px);opacity:1}}
 @keyframes message-in{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
 @keyframes reply-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(20deg)}}
 @media(max-width:700px){
   #intro{padding:24px 18px 16px;gap:18px}.intro-stage{gap:25px}
   .mila-profile{gap:20px;padding:4px 10px}.mila-avatar{width:90px;height:90px;border-width:4px}.mila-avatar img{width:74px;height:74px}
@@ -213,7 +212,12 @@ nav.main a:hover::after{transform:none}
 .art .note{position:absolute;font-family:var(--f-hand);font-weight:700;font-size:1.55rem;white-space:nowrap;line-height:1}
 .art .note.a{left:0;bottom:6%;transform:rotate(-6deg);color:var(--coral-deep)}
 .art .note.b{right:0;top:2%;transform:rotate(5deg);color:#c99a2e}
-.spark{position:absolute;color:var(--oro);animation:twinkle 3.6s ease-in-out infinite}
+.spark{position:absolute;left:var(--x);top:var(--y);width:1em;height:1em;font-size:var(--size,22px);line-height:1;color:var(--star-color,var(--oro));pointer-events:none;user-select:none;opacity:.6;animation:star-bloom var(--duration,6s) cubic-bezier(.45,0,.55,1) var(--delay,0s) infinite}
+.spark::before,.spark::after{content:"✦";position:absolute;inset:0;animation:star-focus var(--duration,6s) cubic-bezier(.45,0,.55,1) var(--delay,0s) infinite}
+.spark::after{filter:blur(2.5px);animation-name:star-haze}
+@keyframes star-bloom{0%,100%{opacity:.05;transform:scale(.9) rotate(-8deg)}40%,55%{opacity:.85;transform:scale(1.08) rotate(10deg)}}
+@keyframes star-focus{0%,100%{opacity:0}35%,60%{opacity:1}}
+@keyframes star-haze{0%,100%{opacity:1}35%,60%{opacity:.12}}
 
 /* Catálogos separados y fichas de producto. */
 #inicio,[data-page]{scroll-margin-top:128px}
@@ -312,6 +316,10 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   [data-reveal]{opacity:1;transform:none}
+  .spark,.spark::before,.spark::after{animation:none}
+  .spark{opacity:.6;transform:none}
+  .spark::before{opacity:1}
+  .spark::after{opacity:.12}
 }
 </style>
 </head>
@@ -383,8 +391,16 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
         <a class="card-mini c1" href="#clipart" tabindex="-1"><img src="./assets/home/halloween-portada.webp" alt="" width="900" height="900"><span class="tag">Clipart</span></a>
         <a class="card-mini c2" href="#clipart" tabindex="-1"><img src="./assets/home/halloween-detalles-3.webp" alt="" width="700" height="700"><span class="tag">Ilustraciones</span></a>
         <a class="card-mini c3" href="#clipart" tabindex="-1"><img src="./assets/home/halloween-detalles-1.webp" alt="" width="700" height="700"></a>
-        <span class="spark" style="left:6%;top:8%;font-size:26px">✦</span>
-        <span class="spark" style="right:8%;bottom:14%;font-size:20px;animation-delay:1.2s">✦</span>
+        <span class="spark" style="--x:6%;--y:8%;--size:26px;--duration:6.8s;--delay:-2.5s"></span>
+        <span class="spark" style="--x:22%;--y:1%;--size:18px;--star-color:#F88C80;--duration:5.8s;--delay:-.8s"></span>
+        <span class="spark" style="--x:43%;--y:0%;--size:14px;--star-color:#8EBCA8;--duration:7.2s;--delay:-4s"></span>
+        <span class="spark" style="--x:77%;--y:16%;--size:23px;--star-color:#B5A0C8;--duration:6.2s;--delay:-2.8s"></span>
+        <span class="spark" style="--x:95%;--y:29%;--size:17px;--star-color:#F88C80;--duration:7.4s;--delay:-5.5s"></span>
+        <span class="spark" style="--x:88%;--y:84%;--size:22px;--duration:6.4s;--delay:-1.3s"></span>
+        <span class="spark" style="--x:73%;--y:94%;--size:16px;--star-color:#8EBCA8;--duration:5.6s;--delay:-3.2s"></span>
+        <span class="spark" style="--x:51%;--y:95%;--size:23px;--star-color:#F88C80;--duration:7s;--delay:-2.2s"></span>
+        <span class="spark" style="--x:35%;--y:79%;--size:16px;--star-color:#B5A0C8;--duration:6.6s;--delay:-5s"></span>
+        <span class="spark" style="--x:2%;--y:76%;--size:21px;--star-color:#8EBCA8;--duration:6s;--delay:-2.5s"></span>
         <span class="note a">¡30 PNG listos!</span>
         <span class="note b">fondo transparente</span>
       </div>
