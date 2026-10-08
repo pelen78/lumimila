@@ -1,7 +1,9 @@
+import {BUILTIN_FONTS,validateFontRefs,ensureDesignFonts} from './fonts.mjs';
+import {validateAudioSettings} from './audio.mjs';
 export const W=500, H=700;
 export const clone = value => JSON.parse(JSON.stringify(value));
 export const uid = () => globalThis.crypto.randomUUID();
-export const FONTS = ['Fraunces','DM Sans','Georgia'];
+export const FONTS = BUILTIN_FONTS;
 export const COLORS = ['#245776','#d36b47','#dba936','#456451','#3d3d35','#ffffff'];
 export const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
 export function textLayer(id,text,y,size,color,extra={}) {
@@ -29,19 +31,23 @@ function validImage(src) {return src===null || src==='./assets/fiesta-bg.png' ||
 export function validateDesign(raw) {
   if(!raw || typeof raw!=='object' || raw.width!==W || raw.height!==H || !Array.isArray(raw.elements) || raw.elements.length>100) throw new Error('El archivo no es una plantilla compatible.');
   if(!validImage(raw.backgroundImage ?? null)) throw new Error('El fondo del archivo no es compatible.');
+  const fontRefs=validateFontRefs(raw.fonts);
+  const audioSettings=validateAudioSettings(raw);
+  const animation=raw.animation??'none';if(!['none','sparkle','confetti','bubbles'].includes(animation))throw new Error('La animación del diseño no es válida.');
+  const allowedFonts=new Set([...FONTS,...fontRefs.map(f=>f.id)]);
   const color=v=>typeof v==='string' && /^#[0-9a-f]{6}$/i.test(v);
   const ids=new Set();
   for(const e of raw.elements){
     if(!e || !['text','image','shape'].includes(e.type)||typeof e.id!=='string'||ids.has(e.id))throw new Error('La plantilla tiene elementos inválidos.');
     ids.add(e.id);
     if(!['x','y','w','h'].every(k=>Number.isFinite(e[k])) || e.w<1 || e.h<1 || e.w>W || e.h>H || e.x<0 || e.y<0 || e.x+e.w>W+.1 || e.y+e.h>H+.1)throw new Error('Hay un elemento fuera del lienzo.');
-    if(e.type==='text' && (typeof e.text!=='string'||e.text.length>500 || !FONTS.includes(e.font) || !Number.isFinite(e.size)||e.size<6||e.size>120||!Number.isFinite(e.weight)||e.weight<100||e.weight>900||!['left','center','right'].includes(e.align)||!Number.isInteger(e.maxLength)||e.maxLength<1||e.maxLength>500||!color(e.color)))throw new Error('El formato de texto no es válido.');
+    if(e.type==='text' && (typeof e.text!=='string'||e.text.length>500 || !allowedFonts.has(e.font) || !Number.isFinite(e.size)||e.size<6||e.size>120||!Number.isFinite(e.weight)||e.weight<100||e.weight>900||!['left','center','right'].includes(e.align)||!Number.isInteger(e.maxLength)||e.maxLength<1||e.maxLength>500||!color(e.color)))throw new Error('El formato de texto no es válido.');
     if(e.type==='image' && (!validImage(e.src)||!e.src))throw new Error('La imagen no es compatible.');
     if(e.type==='shape' && (!['line','circle','rect','star','heart'].includes(e.shape)||!color(e.color)))throw new Error('El elemento decorativo no es válido.');
     e.editable=e.type==='text' && Boolean(e.editable);e.locked=Boolean(e.locked);e.label=String(e.label||'Elemento').slice(0,80);
   }
   if(!color(raw.background))throw new Error('El color de fondo no es válido.');
-  return {...raw,id:typeof raw.id==='string'?raw.id:uid(),name:String(raw.name||'Mi invitación').slice(0,80),backgroundImage:raw.backgroundImage||null,updatedAt:Number.isFinite(raw.updatedAt)?raw.updatedAt:Date.now()};
+  return {...raw,...audioSettings,animation,fonts:fontRefs,id:typeof raw.id==='string'?raw.id:uid(),name:String(raw.name||'Mi invitación').slice(0,80),backgroundImage:raw.backgroundImage||null,updatedAt:Number.isFinite(raw.updatedAt)?raw.updatedAt:Date.now()};
 }
 const images=new Map();
 export async function loadImage(src) {
@@ -70,6 +76,7 @@ export function fitText(ctx,e) {
   return {size,lines};
 }
 export async function renderDesign(canvas,design,scale=2) {
+  await ensureDesignFonts(design);
   const prepared=await Promise.all([design.backgroundImage?loadImage(design.backgroundImage):null,...design.elements.map(e=>e.type==='image'?loadImage(e.src):null)]);
   const ctx=canvas.getContext('2d');canvas.width=W*scale;canvas.height=H*scale;ctx.scale(scale,scale);
   ctx.fillStyle=design.background;ctx.fillRect(0,0,W,H);
