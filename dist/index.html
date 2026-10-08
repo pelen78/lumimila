@@ -80,79 +80,94 @@ p{margin:0}
 .btn.small{padding:8px 16px;font-size:.82rem}
 
 /* Bienvenida: una conversación con Mila, sin adornos flotantes. */
-#intro{position:fixed;inset:0;z-index:200;overflow-y:auto;overscroll-behavior:contain;background:radial-gradient(ellipse at 0% 65%,#F88C803b,transparent 58%),radial-gradient(ellipse at 100% 22%,#FFC76540,transparent 58%),#fff8f2;display:grid;grid-template-rows:auto 1fr auto;gap:20px;padding:22px clamp(18px,5vw,76px) 18px;transition:opacity .25s ease,visibility .25s;color:var(--gris)}
+html.intro-on body::after{opacity:.12}
+#intro{position:fixed;inset:0;z-index:200;overflow-y:auto;overscroll-behavior:contain;isolation:isolate;background:radial-gradient(ellipse at 4% 55%,#f9a296 0%,#ffcbbb 24%,transparent 53%),radial-gradient(ellipse at 100% 4%,#ffb4a3 0%,#ffe0bb 32%,transparent 61%),radial-gradient(ellipse at 92% 96%,#f9a897 0%,#ffdca5 27%,transparent 58%),#fff8ed;display:grid;grid-template-rows:auto 1fr auto;gap:20px;padding:20px clamp(20px,5vw,76px) 18px;transition:opacity .25s ease,visibility .25s;color:var(--gris)}
+#intro::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 10%,#fffaf4e6 0%,#fffaf450 34%,transparent 64%),radial-gradient(ellipse at 0% 100%,#ffe1aacc,transparent 40%)}
+#intro:focus{outline:none}
 #intro.done{opacity:0;visibility:hidden;pointer-events:none}
 .intro-bar{width:min(1180px,100%);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.intro-logo{width:320px;height:auto;flex-shrink:0}
-.intro-skip{font-size:.86rem;white-space:nowrap;padding:12px 4px;color:var(--gris);text-underline-offset:5px}
+.intro-logo{width:310px;height:auto;flex-shrink:0}
+.intro-skip{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-size:1rem;white-space:nowrap;padding:12px 4px;color:#706057;text-underline-offset:5px}
 .intro-skip:hover{text-decoration:underline}
-.messenger{align-self:center;width:min(940px,100%);margin:0 auto;background:#fffdfbef;border:1px solid #BEB2A659;border-radius:30px;padding:28px 36px 26px;box-shadow:0 22px 70px -34px #90645254,0 2px 4px #BEB2A610}
-.messenger-header{display:flex;align-items:center;gap:18px;border-bottom:1px solid #BEB2A633;padding-bottom:21px}
-.mila-avatar{width:76px;height:76px;flex-shrink:0;border-radius:50%;background:#f2ebe3;display:grid;place-items:center}
-.mila-avatar img{width:64px;height:64px}
-.messenger h2{font-family:var(--f-body);font-size:1.7rem;font-weight:700;letter-spacing:-.04em;color:#494642}
-.mila-status{display:flex;align-items:center;gap:7px;font-size:.84rem;margin-top:3px}
-.mila-status i{width:7px;height:7px;background:#66997a;border-radius:50%}
-.mila-subtitle{font-size:.82rem;color:#847c75;margin-top:2px}
-.conversation{display:flex;flex-direction:column;gap:12px;min-height:236px;padding:20px 2px 24px}
-.chat-date{align-self:center;font-size:.75rem;color:#958b81;margin-bottom:6px}
-.chat-message{align-self:flex-start;width:fit-content;max-width:85%;padding:12px 18px;background:#f1ebe5;border-radius:22px 22px 22px 6px;font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.45}
-.chat-message[hidden],.typing-message[hidden]{display:none}
-.chat-message.appear{animation:message-in .32s cubic-bezier(.22,1,.36,1) both}
-.chat-message.outgoing{align-self:flex-end;background:var(--coral);color:#55352e;border-radius:22px 22px 6px 22px;font-size:1rem;margin-top:3px}
-.typing-message{display:flex;align-items:center;gap:8px;min-height:38px;color:#91867d;font-size:.76rem}
-.typing-dots{display:flex;gap:5px;background:#f1ebe5;padding:13px 17px;border-radius:20px}
-.typing-dots i{width:6px;height:6px;background:var(--beige);border-radius:50%;animation:typing-dot 1.1s infinite}
-.typing-dots i:nth-child(2){animation-delay:.15s}.typing-dots i:nth-child(3){animation-delay:.3s}
-.reply-caption{font-size:.82rem;margin-bottom:12px;color:#766e67}
-.reply-options{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-/* Button flight adapted from Uiverse.io by adamgiebl (MIT). */
-.intro-reply{position:relative;display:flex;align-items:center;justify-content:center;min-height:62px;border-radius:18px;overflow:hidden;padding:14px 18px 14px 48px;background:var(--coral);color:#53352f;border:1px solid transparent;font-size:.93rem;font-weight:600;line-height:1.3;transition:transform .2s,background .2s;isolation:isolate}
-.intro-reply.secondary{background:transparent;color:var(--gris);border-color:var(--beige)}
-.reply-label{display:block;transition:transform .3s ease-in-out,opacity .2s ease;max-width:100%}
-.reply-icon{position:absolute;left:18px;top:calc(50% - 12px);width:24px;height:24px;transition:left .3s ease-in-out}
-.intro-reply svg{display:block;width:24px;height:24px;transform-origin:center;transition:transform .3s ease-in-out}
-.intro-reply:active{transform:scale(.95)}
+.intro-skip svg{width:20px;height:20px}
+.messenger{align-self:center;width:min(900px,100%);margin:0 auto;background:#fffdfaef;border:1px solid #ffffffd9;border-radius:34px;box-shadow:0 24px 70px -25px #9d583d55,0 2px 8px #a2775220,inset 0 0 0 1px #c7ad9638;overflow:hidden;animation:chat-window-in .6s cubic-bezier(.22,1,.36,1) both}
+.messenger-header{display:flex;align-items:center;gap:16px;margin:0 30px;padding:23px 0 20px;border-bottom:1px solid #dbc9b666}
+.mila-avatar{position:relative;width:72px;height:72px;flex-shrink:0;border-radius:50%;background:linear-gradient(145deg,#fff5e1,#f7dfd3);display:grid;place-items:center;box-shadow:0 0 0 5px #fff9f2,0 0 0 6px #eddbc69c}
+.mila-avatar::after{content:"";position:absolute;right:1px;bottom:2px;width:13px;height:13px;background:#85af8d;border:3px solid #fffaf3;border-radius:50%}
+.mila-avatar img{width:62px;height:62px}
+.messenger h2{font-family:var(--f-display);font-size:2rem;font-weight:500;letter-spacing:-.02em;color:#64534a}
+.mila-status{font-size:.8rem;margin-top:3px;color:#857267;min-width:100px}
+.mila-subtitle{margin-left:auto;font-family:var(--f-hand);font-size:1.35rem;color:#b47b64;line-height:1.2;text-align:right;transform:rotate(-3deg)}
+.conversation{display:flex;flex-direction:column;align-items:flex-start;gap:10px;height:290px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#e8cab9 transparent;padding:18px 32px 14px;scroll-behavior:smooth}
+.chat-date{align-self:center;font-size:.68rem;letter-spacing:.08em;color:#9a8b7e;margin-bottom:6px}
+.chat-message{flex-shrink:0;width:fit-content;max-width:88%;padding:11px 18px;background:#f2eae1;border:1px solid #e9ded249;border-radius:24px 24px 24px 7px;font-family:var(--f-display);font-weight:400;font-size:1.34rem;line-height:1.35;color:#69564c;transform-origin:18px bottom;box-shadow:0 2px 2px #89715a05}
+.chat-message[hidden],.typing-message[hidden],.message-receipt[hidden]{display:none}
+.chat-message.appear{animation:message-in .48s cubic-bezier(.16,1,.3,1) both}
+.chat-message.question{background:#fff0d2;border-color:#f6d8a54d}
+.chat-message.outgoing{align-self:flex-end;background:#f9aaa0;color:#603c35;border-color:#f1988b70;border-radius:24px 24px 7px 24px;font-size:1.16rem;transform-origin:right bottom}
+.message-receipt{align-self:flex-end;color:#a08677;font-size:.65rem;margin-top:-5px}
+.typing-message{flex-shrink:0;display:flex;align-items:center;gap:10px;min-height:40px;color:#9b8173;font-size:.74rem;animation:message-in .25s ease-out both}
+.typing-dots{display:flex;gap:5px;background:#f2eae1;padding:15px 18px;border-radius:21px 21px 21px 7px}
+.typing-dots i{width:6px;height:6px;background:#b9a99b;border-radius:50%;animation:typing-dot 1.2s infinite}
+.typing-dots i:nth-child(2){animation-delay:.16s}.typing-dots i:nth-child(3){animation-delay:.32s}
+.reply-area{padding:6px 30px 24px}
+.reply-caption{font-family:var(--f-hand);font-size:1.3rem;color:#b58068;display:flex;align-items:center;gap:12px;margin:0 0 12px}
+.reply-caption::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,#e5cdbd,transparent)}
+.reply-options{display:grid;grid-template-columns:1fr 1fr;gap:14px;visibility:hidden}
+.reply-options.is-ready{visibility:visible}
+.reply-options.is-ready .intro-reply{animation:reply-in .45s cubic-bezier(.16,1,.3,1) backwards}
+.reply-options.is-ready .intro-reply:nth-child(2){animation-delay:.1s}
+/* A softer take on the flight interaction by Uiverse.io / adamgiebl (MIT). */
+.intro-reply{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:62px;border-radius:999px;overflow:hidden;padding:9px 11px 9px 22px;background:linear-gradient(160deg,#fba093,var(--coral));color:#643d35;border:1px solid #e9968780;font-family:var(--f-display);font-size:1.14rem;font-weight:400;line-height:1.25;text-align:left;box-shadow:0 5px 0 #edbcaa5e,0 8px 15px -10px #be665d8c,inset 0 1px 0 #ffffff70;transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s ease}
+.intro-reply.secondary{background:linear-gradient(160deg,#fff7e9,#ffe7bb);color:#826045;border-color:#dec49c8c;box-shadow:0 5px 0 #e8d5b75e,0 8px 15px -10px #bc92618c,inset 0 1px 0 white}
+.reply-label{display:block;padding:0 4px;transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.reply-icon{width:40px;height:40px;flex-shrink:0;display:grid;place-items:center;border-radius:50%;background:#fff9f470;border:1px solid #fff8f580;overflow:hidden}
+.intro-reply svg{display:block;width:20px;height:20px;transform-origin:center;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.intro-reply:active{transform:translateY(3px) scale(.98);box-shadow:0 1px 0 #edbcaa5e}
 .intro-reply:disabled{cursor:default}
-.intro-reply.is-sending .reply-icon{left:calc(50% - 31px)}
-.intro-reply.is-sending .svg-wrapper{animation:reply-fly .6s ease-in-out infinite alternate}
-.intro-reply.is-sending svg{transform:translateX(1.2em) rotate(45deg) scale(1.1)}
-.intro-reply.is-sending .reply-label{transform:translateX(130%);opacity:0}
+.intro-reply.is-sending .svg-wrapper{animation:reply-send .65s cubic-bezier(.22,1,.36,1) both}
 @media(hover:hover) and (pointer:fine){
-  .intro-reply:hover .reply-icon{left:calc(50% - 31px)}
-  .intro-reply:hover .svg-wrapper{animation:reply-fly .6s ease-in-out infinite alternate}
-  .intro-reply:hover svg{transform:translateX(1.2em) rotate(45deg) scale(1.1)}
-  .intro-reply:hover .reply-label{transform:translateX(130%);opacity:0}
-  .intro-reply.secondary:hover{background:#fff3dc}
+  .intro-reply:not(:disabled):hover{transform:translateY(-3px);box-shadow:0 8px 0 #edbcaa45,0 12px 22px -10px #be665d70}
+  .intro-reply.secondary:not(:disabled):hover{box-shadow:0 8px 0 #e8d5b745,0 12px 22px -10px #bc926170}
+  .intro-reply:not(:disabled):hover .svg-wrapper{animation:reply-fly .6s ease-in-out infinite alternate}
+  .intro-reply:not(:disabled):hover svg{transform:translate(2px,-2px) rotate(-12deg)}
+  .intro-reply:not(:disabled):hover .reply-label{transform:translateX(2px)}
 }
-.reply-hint{margin-top:17px;border-top:1px solid #BEB2A62b;padding-top:15px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.78rem;color:#968a80}
-.reply-hint svg{width:18px;height:18px;color:var(--beige)}
-.intro-foot{text-align:center;font-size:.74rem;letter-spacing:.12em;color:#978a7f}
-@keyframes reply-fly{from{transform:translateY(.1em)}to{transform:translateY(-.1em)}}
-@keyframes typing-dot{0%,60%,100%{transform:none;opacity:.55}30%{transform:translateY(-3px);opacity:1}}
-@keyframes message-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.reply-hint{text-align:center;font-size:.7rem;color:#a08b7e;margin-top:17px;min-height:18px}
+.intro-foot{font-family:var(--f-hand);text-align:center;font-size:1.05rem;color:#9d715e}
+.intro-foot span{color:#d18c77;margin-left:5px}
+@keyframes chat-window-in{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes reply-fly{from{transform:translateY(1px)}to{transform:translateY(-2px)}}
+@keyframes reply-send{to{transform:translate(35px,-35px);opacity:0}}
+@keyframes typing-dot{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+@keyframes message-in{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes reply-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(20deg)}}
-@media(max-width:650px){
-  #intro{padding:12px 16px 20px;gap:14px}
-  .intro-bar{gap:8px}.intro-logo{width:250px;max-width:calc(100% - 88px)}.intro-skip{font-size:.72rem}
-  .messenger{border-radius:24px;padding:22px 20px}
-  .messenger-header{gap:14px;padding-bottom:18px}.mila-avatar{width:62px;height:62px}.mila-avatar img{width:54px;height:54px}
-  .messenger h2{font-size:1.4rem}.mila-subtitle{font-size:.75rem}
-  .conversation{min-height:230px;padding:18px 0 22px;gap:10px}.chat-message{max-width:94%;padding:11px 14px}
-  .reply-options{grid-template-columns:1fr;gap:10px}.intro-reply{min-height:56px;font-size:.88rem}
-  .reply-hint{font-size:.7rem}.intro-foot{font-size:.68rem}
+@media(max-width:700px){
+  #intro{padding:14px 18px 16px;gap:14px}
+  .intro-bar{gap:8px}.intro-logo{width:260px;max-width:calc(100% - 84px)}.intro-skip{gap:5px;font-size:.8rem}.intro-skip svg{width:16px}
+  .messenger{border-radius:29px}
+  .messenger-header{margin:0 22px;padding:20px 0 18px;gap:14px}.mila-avatar{width:60px;height:60px}.mila-avatar img{width:53px;height:53px}
+  .messenger h2{font-size:1.8rem}.mila-subtitle{font-size:1.1rem;max-width:100px}.mila-status{font-size:.73rem}
+  .conversation{height:270px;padding:16px 22px 12px;gap:9px}.chat-message{max-width:96%;padding:10px 15px;font-size:1.23rem}.chat-message.outgoing{font-size:1.1rem}
+  .reply-area{padding:5px 22px 20px}.reply-caption{font-size:1.2rem;margin-bottom:10px}
+  .reply-options{grid-template-columns:1fr;gap:12px}.intro-reply{min-height:56px;padding:8px 10px 8px 20px;font-size:1.1rem}.reply-icon{width:36px;height:36px}
+  .reply-hint{font-size:.66rem;margin-top:15px}.intro-foot{font-size:.95rem}
 }
-@media(min-width:651px) and (max-height:780px){
-  #intro{padding-top:12px;padding-bottom:12px;gap:10px}
-  .intro-logo{width:260px}
-  .messenger{padding:20px 30px}
-  .messenger-header{padding-bottom:16px}.mila-avatar{width:62px;height:62px}.mila-avatar img{width:54px;height:54px}
-  .conversation{min-height:184px;padding:14px 2px 16px;gap:10px}
-  .reply-hint{margin-top:12px;padding-top:12px}
+@media(max-width:400px){
+  #intro{padding-inline:14px}.intro-logo{max-width:calc(100% - 75px)}.intro-skip{font-size:.72rem}
+  .messenger-header{margin-inline:18px}.mila-subtitle{font-size:1rem;max-width:85px}.messenger h2{font-size:1.65rem}
+  .conversation{padding-inline:18px;height:270px}.chat-message{font-size:1.15rem}.typing-message{font-size:.65rem}
+  .reply-area{padding-inline:18px}.intro-reply{font-size:1.02rem}
+}
+@media(min-width:701px) and (max-height:800px){
+  #intro{padding-top:12px;padding-bottom:12px;gap:12px}.intro-logo{width:260px}
+  .messenger-header{padding:18px 0 16px}.mila-avatar{width:62px;height:62px}.mila-avatar img{width:54px;height:54px}
+  .conversation{height:265px}.reply-area{padding-bottom:20px}
 }
 @media(prefers-reduced-motion:reduce){
-  #intro{scroll-behavior:auto}.intro-reply .reply-label{transform:none!important;opacity:1!important}
-  .intro-reply .reply-icon{left:18px!important}.intro-reply svg{transform:none!important}
+  .conversation{scroll-behavior:auto}.messenger,.chat-message.appear,.reply-options.is-ready .intro-reply{animation:none}
+  .intro-reply .reply-label,.intro-reply .svg-wrapper,.intro-reply svg{transform:none!important;animation:none!important}
 }
 
 /* ================= HEADER ================= */
@@ -332,32 +347,39 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
 <body>
 
 <!-- ================= ENTRADA: MENSAJES DE MILA ================= -->
-<div id="intro" role="dialog" aria-modal="true" aria-label="Bienvenida a Lumimila">
+<div id="intro" role="dialog" aria-modal="true" aria-label="Bienvenida a Lumimila" tabindex="-1">
   <div class="intro-bar">
     <img class="intro-logo" src="./assets/lumimila-logo-web.svg" alt="Lumimila · Clipart &amp; Illustrations" width="1010" height="350">
-    <button class="intro-skip" id="skip" type="button">Saltar intro →</button>
+    <button class="intro-skip" id="skip" type="button">Saltar intro <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></button>
   </div>
   <section class="messenger" aria-labelledby="mila-name">
     <div class="messenger-header">
       <div class="mila-avatar"><img src="./assets/mila-avatar.svg" alt="La carita de Mila" width="85" height="85"></div>
-      <div><h2 id="mila-name">Mila</h2><div class="mila-status"><i aria-hidden="true"></i>En línea</div><p class="mila-subtitle">Tu compañera creativa</p></div>
+      <div><h2 id="mila-name">Mila</h2><p class="mila-status" id="mila-status">escribiendo…</p></div>
+      <p class="mila-subtitle">Tu compañera<br>creativa</p>
     </div>
     <div class="conversation" role="log" aria-live="polite" aria-relevant="additions text">
-      <span class="chat-date">Un nuevo mensaje para ti</span>
-      <p class="chat-message" id="hello-message" hidden>¡Hola! Soy Mila 👋</p>
-      <p class="chat-message" id="question-message" hidden>¿Qué vamos a crear hoy?</p>
+      <span class="chat-date">HOY · UN RATITO PARA CREAR</span>
+      <p class="chat-message" id="hello-message" hidden>¡Hola! Soy Mila <span aria-label="saludando">👋</span></p>
+      <p class="chat-message" id="welcome-message" hidden>Qué bonito tenerte por aquí.</p>
+      <p class="chat-message question" id="question-message" hidden>¿Qué vamos a crear hoy?</p>
       <p class="chat-message outgoing" id="choice-message" hidden></p>
+      <span class="message-receipt" id="message-receipt" hidden>Leído por Mila ✓✓</span>
       <div class="typing-message" id="typing-message"><span class="typing-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Mila está escribiendo…</span></div>
+      <p class="chat-message" id="answer-message" hidden></p>
     </div>
-    <div class="reply-caption" id="reply-caption">Elige una respuesta</div>
-    <div class="reply-options" role="group" aria-labelledby="reply-caption">
-      <button class="intro-reply" type="button" data-intro-target="clipart" aria-label="Quiero ver las ilustraciones"><span class="reply-icon" aria-hidden="true"><span class="svg-wrapper"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 3.5 22 12 2 20.5l2-7 10-1.5L4 10.5z"/></svg></span></span><span class="reply-label">Quiero ver las ilustraciones</span></button>
-      <button class="intro-reply secondary" type="button" data-intro-target="invitaciones" aria-label="Muéstrame las invitaciones"><span class="reply-icon" aria-hidden="true"><span class="svg-wrapper"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 3.5 22 12 2 20.5l2-7 10-1.5L4 10.5z"/></svg></span></span><span class="reply-label">Muéstrame las invitaciones</span></button>
+    <div class="reply-area">
+      <p class="reply-caption" id="reply-caption">Un mensajito para ti…</p>
+      <div class="reply-options" role="group" aria-labelledby="reply-caption" inert>
+        <button class="intro-reply" type="button" data-intro-target="clipart" aria-label="Quiero ver las ilustraciones"><span class="reply-label">Quiero ver las ilustraciones</span><span class="reply-icon" aria-hidden="true"><span class="svg-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21 3-6 18-4-8-8-4 18-6ZM11 13 21 3"/></svg></span></span></button>
+        <button class="intro-reply secondary" type="button" data-intro-target="invitaciones" aria-label="Muéstrame las invitaciones"><span class="reply-label">Muéstrame las invitaciones</span><span class="reply-icon" aria-hidden="true"><span class="svg-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21 3-6 18-4-8-8-4 18-6ZM11 13 21 3"/></svg></span></span></button>
+      </div>
+      <p class="reply-hint" id="intro-hint" role="status">Las cosas bonitas empiezan con un hola.</p>
     </div>
-    <div class="reply-hint"><span id="intro-hint" role="status">Toca una opción para continuar</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 3 18 8-8 3-3 8zM10 14l11-3"/></svg></div>
   </section>
-  <p class="intro-foot">hecho con mucho cariño</p>
+  <p class="intro-foot">hecho con mucho cariño <span aria-hidden="true">♡</span></p>
 </div>
+
 
 <!-- ================= SITIO ================= -->
 <header class="top">
@@ -551,13 +573,38 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
   const intro = document.getElementById('intro');
   const skip = document.getElementById('skip');
   const replies = [...intro.querySelectorAll('[data-intro-target]')];
+  const replyOptions = intro.querySelector('.reply-options');
+  const conversation = intro.querySelector('.conversation');
+  const typing = document.getElementById('typing-message');
+  const status = document.getElementById('mila-status');
+  const greeting = ['hello-message', 'welcome-message', 'question-message'];
   const timers = [];
   const background = [...document.querySelectorAll('header.top, main, footer.site')];
   let introActive = !document.documentElement.dataset.skipIntro;
   let choosing = false;
-  const later = (fn, ms) => timers.push(setTimeout(fn, ms));
-  const show = id => { const el = document.getElementById(id); el.hidden = false; el.classList.add('appear'); };
+  let repliesReady = false;
+  const later = (fn, ms) => timers.push(setTimeout(() => { if (introActive) fn(); }, ms));
+  const scrollConversation = () => conversation.scrollTo({top:conversation.scrollHeight, behavior:reduce ? 'instant' : 'smooth'});
+  const show = id => {
+    const el = document.getElementById(id);
+    el.hidden = false;
+    el.classList.add('appear');
+    scrollConversation();
+  };
+  const setTyping = active => {
+    typing.hidden = !active;
+    status.textContent = active ? 'escribiendo…' : 'En línea';
+    if (active) scrollConversation();
+  };
   const clearIntroTimers = () => { timers.forEach(clearTimeout); timers.length = 0; };
+  function readyReplies() {
+    repliesReady = true;
+    setTyping(false);
+    replyOptions.inert = false;
+    replyOptions.classList.add('is-ready');
+    document.getElementById('reply-caption').textContent = 'Cuéntame, ¿qué se te antoja?';
+    document.getElementById('intro-hint').textContent = 'Elige una respuesta y vamos a descubrirlo.';
+  }
   function closeIntro(target = 'inicio') {
     if (!introActive) return;
     introActive = false;
@@ -579,38 +626,53 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     setTimeout(() => { intro.style.display = 'none'; }, reduce ? 0 : 260);
   }
   function chooseReply(button) {
-    if (!introActive || choosing) return;
+    if (!introActive || choosing || !repliesReady) return;
     choosing = true;
     clearIntroTimers();
-    show('hello-message');show('question-message');
-    document.getElementById('typing-message').hidden = true;
-    const choice = document.getElementById('choice-message');
-    choice.textContent = button.getAttribute('aria-label');show('choice-message');
-    document.getElementById('intro-hint').textContent = '¡Vamos a verlo!';
+    const target = button.dataset.introTarget;
+    document.getElementById('choice-message').textContent = button.getAttribute('aria-label');
+    show('choice-message');
+    document.getElementById('intro-hint').textContent = 'Mensaje enviado';
     replies.forEach(el => { el.disabled = true; });
+    // Keep keyboard focus inside the dialog while its replies are disabled.
+    intro.focus({preventScroll:true});
     button.classList.add('is-sending');
-    // The selected logo transition can be added here in the next design step.
-    later(() => closeIntro(button.dataset.introTarget), reduce ? 0 : 900);
+    if (reduce) { closeIntro(target); return; }
+    later(() => { show('message-receipt');setTyping(true); }, 400);
+    later(() => {
+      setTyping(false);
+      document.getElementById('answer-message').textContent = target === 'clipart' ? '¡Sí! Te van a encantar ♡' : '¡Vamos a celebrar algo bonito!';
+      show('answer-message');
+      document.getElementById('intro-hint').textContent = '¡Vamos allá!';
+    }, 1350);
+    // The large-logo transition belongs to the next design step.
+    later(() => closeIntro(target), 2300);
   }
   replies.forEach(button => button.addEventListener('click', () => chooseReply(button)));
   skip.addEventListener('click', () => closeIntro());
   if (introActive) {
     background.forEach(el => { el.inert = true; });
-    skip.focus({preventScroll:true});
-    if (reduce) { show('hello-message');show('question-message');document.getElementById('typing-message').hidden = true; }
+    intro.focus({preventScroll:true});
+    if (reduce) { greeting.forEach(show);readyReplies(); }
     else {
-      later(() => show('hello-message'), 450);
-      later(() => { show('question-message'); document.getElementById('typing-message').hidden = true; }, 1350);
+      // A real pause between messages lets the typing indicator tell the story.
+      later(() => { setTyping(false);show('hello-message'); }, 1250);
+      later(() => setTyping(true), 1850);
+      later(() => { setTyping(false);show('welcome-message'); }, 3300);
+      later(() => setTyping(true), 3850);
+      later(() => { setTyping(false);show('question-message'); }, 5250);
+      later(readyReplies, 5650);
     }
   }
   intro.addEventListener('keydown', event => {
     if (!introActive) return;
-    if (event.key === 'Escape') { event.preventDefault(); closeIntro(); }
+    if (event.key === 'Escape') { event.preventDefault();closeIntro(); }
     if (event.key === 'Tab') {
-      const focusable = [skip, ...replies.filter(el => !el.disabled)];
+      const focusable = [skip, ...(repliesReady ? replies.filter(el => !el.disabled) : [])];
       const first = focusable[0], last = focusable.at(-1);
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      if (document.activeElement === intro) { event.preventDefault();(event.shiftKey ? last : first).focus(); }
+      else if (event.shiftKey && document.activeElement === first) { event.preventDefault();last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault();first.focus(); }
     }
   });
   document.getElementById('replay').addEventListener('click', () => { location.href = location.pathname + '?intro=1'; });
