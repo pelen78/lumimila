@@ -85,20 +85,6 @@ p{margin:0}
 #intro .float{position:absolute;color:var(--oro);font-size:22px;animation:twinkle 3.2s ease-in-out infinite}
 #intro .float.c{color:var(--coral)}
 @keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(20deg)}}
-.intro-copy{position:relative;z-index:2;text-align:center;transition:opacity .5s}
-.intro-copy .hand{font-size:clamp(1.7rem,4vw,2.3rem)}
-.intro-copy p{color:var(--muted);font-size:.92rem}
-#intro.opening .intro-copy{opacity:0}
-.phone{position:relative;z-index:2;height:min(600px,70vh);aspect-ratio:9/18.5;background:#3a3331;border-radius:46px;padding:10px;box-shadow:0 0 0 2px #574d4a inset,0 40px 70px -30px rgba(110,50,40,.55);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
-#intro.opening .phone{transform:scale(.97)}
-.phone .notch{position:absolute;top:18px;left:50%;width:82px;height:22px;margin-left:-41px;background:#3a3331;border-radius:14px;z-index:6}
-.screen{position:relative;height:100%;border-radius:37px;overflow:hidden;display:flex;flex-direction:column;background:#f8efe6 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'><text x='8' y='20' font-size='12' fill='%23f1d9cc'>✦</text><text x='38' y='50' font-size='9' fill='%23f6e2b9'>✦</text></svg>")}
-.chat-head{padding:44px 14px 10px;background:var(--paper);display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
-.avatar{width:38px;height:38px;border-radius:50%;background:#fff3dc;box-shadow:0 0 0 2px var(--coral);display:grid;place-items:center;flex:none;overflow:hidden}
-.avatar svg{width:30px;height:30px}
-.chat-head b{display:block;font-size:.92rem;line-height:1.2}
-.chat-head small{font-size:.72rem;color:#2f9c8c}
-.chat{flex:1;padding:14px 12px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;overflow:hidden}
 .msg{align-self:flex-start;max-width:84%;background:#fff;border-radius:16px 16px 16px 5px;padding:8px 12px;font-size:.86rem;line-height:1.35;box-shadow:0 1px 1px rgba(80,40,30,.08);display:none;transform-origin:left bottom}
 .msg.show{display:block;animation:pop .4s cubic-bezier(.2,.8,.2,1)}
 .typing.show{display:flex}
@@ -108,25 +94,35 @@ p{margin:0}
 .typing i{width:6px;height:6px;border-radius:50%;background:#c9b8ad;animation:dot 1s infinite}
 .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
 @keyframes dot{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-4px);opacity:1}}
-.msg.card{padding:6px;width:74%}
-.msg.card .invite{border-radius:11px;aspect-ratio:5/6;background-position:center 18%}
-.msg.card .cap{display:flex;justify-content:space-between;align-items:center;padding:7px 6px 2px;font-size:.74rem;color:var(--muted)}
-.open-btn{display:block;width:100%;margin-top:6px;background:var(--coral);color:#4a2b27;font-weight:700;font-size:.86rem;border-radius:10px;padding:9px;box-shadow:0 6px 14px -8px rgba(226,104,91,.9);animation:pulse 1.8s ease-in-out infinite}
-.open-btn:hover{background:#f6796c}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(248,140,128,.55)}50%{box-shadow:0 0 0 8px rgba(248,140,128,0)}}
-.chat-input{display:flex;gap:8px;align-items:center;padding:8px 10px 18px;background:var(--paper)}
-.chat-input span{flex:1;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:.78rem;color:#b3a59a}
-.chat-input i{width:32px;height:32px;border-radius:50%;background:#2f9c8c;flex:none}
-.full{position:absolute;inset:0;z-index:5;opacity:0;transform:scale(.35) translateY(18%);transition:opacity .4s ease,transform .8s cubic-bezier(.2,.8,.2,1);pointer-events:none}
-.full .invite{height:100%;aspect-ratio:auto}
-#intro.opening .full{opacity:1;transform:none}
-.full .l1{font-size:9cqw}.full .l2{font-size:21cqw}.full .l3{font-size:7.4cqw}.full .l4{font-size:6.4cqw;margin-top:3cqw}.full .l5{font-size:6cqw}
-.intro-hint{font-size:.88rem;color:var(--muted);transition:opacity .4s;text-align:center}
-.intro-hint b{font-family:var(--f-hand);font-size:1.45rem;color:var(--coral-deep);font-weight:400}
-#intro.opening .intro-hint{opacity:0}
 #confetti{position:absolute;inset:0;pointer-events:none;width:100%;height:100%;z-index:10}
 .intro-skip{position:absolute;right:22px;bottom:22px;font-size:.85rem;color:var(--muted);padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.6);z-index:11}
 .intro-skip:hover{color:var(--ink);background:#fff}
+.ibox{position:relative;z-index:2;width:min(540px,100%);background:#fffdfb;border-radius:34px;padding:34px 34px 24px;text-align:center;box-shadow:0 0 0 1px rgba(240,215,205,.8),0 50px 90px -45px rgba(150,70,60,.55);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.ibox::before,.ibox::after{content:"✦";position:absolute;color:#fde3df;font-size:70px;line-height:1;pointer-events:none}
+.ibox::before{right:20px;top:14px}.ibox::after{left:18px;bottom:10px;font-size:46px;color:#fff0cf}
+#intro.opening .ibox{transform:scale(.97)}
+.avatar{position:relative;width:84px;height:84px;margin:0 auto;border-radius:24px;background:#fff3dc;box-shadow:0 0 0 4px #fff,0 0 0 6px #f8c4bb,0 14px 24px -14px rgba(150,70,60,.6);display:grid;place-items:center}
+.avatar svg{width:66px;height:66px}
+.avatar .badge{position:absolute;right:-10px;bottom:-10px;width:32px;height:32px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 3px #fff;display:grid;place-items:center}
+.avatar .badge svg{width:17px;height:17px}
+.ibox .eyebrow{display:block;margin-top:22px;color:var(--coral-deep)}
+.ibox h2{font-size:clamp(1.7rem,4vw,2.2rem);margin-top:8px}
+.chat{margin:22px auto 0;max-width:400px;min-height:226px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;text-align:left}
+.msg{align-self:flex-start;max-width:86%;background:#f6eee8;border-radius:18px 18px 18px 5px;padding:10px 14px;font-size:.95rem;line-height:1.35;display:none;transform-origin:left bottom}
+.msg .t{display:block;text-align:right;font-size:.66rem;color:#a39589;margin-top:2px}
+.sticker{background:none!important;padding:0!important;max-width:none;box-shadow:none!important}
+.sticker>svg{width:150px;height:150px;filter:drop-shadow(0 8px 10px rgba(120,60,50,.22));animation:wiggle 2.6s ease-in-out .5s infinite;transform-origin:50% 80%}
+@keyframes wiggle{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg) scale(1.03)}}
+.open-wrap{margin-top:18px;min-height:96px;opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease;pointer-events:none}
+.open-wrap.ready{opacity:1;transform:none;pointer-events:auto}
+.open-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#f99a8e,var(--coral-deep));color:#fff;font-family:var(--f-display);font-weight:600;font-size:1.15rem;border-radius:999px;padding:16px 46px;box-shadow:0 16px 28px -14px rgba(226,104,91,.9);transition:transform .2s ease}
+.open-btn:hover{transform:translateY(-2px) scale(1.02)}
+.open-wrap.ready .open-btn{animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 16px 28px -14px rgba(226,104,91,.9),0 0 0 0 rgba(248,140,128,.45)}50%{box-shadow:0 16px 28px -14px rgba(226,104,91,.9),0 0 0 10px rgba(248,140,128,0)}}
+.open-wrap small{display:block;margin-top:10px;color:var(--muted);font-size:.82rem}
+.ibox .foot{margin-top:6px;font-family:var(--f-hand);font-size:1.15rem;color:#b9a99e}
+@media (max-width:600px){.ibox{padding:28px 20px 20px;border-radius:28px}.chat{min-height:210px}.sticker>svg{width:128px;height:128px}}
 .blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:.55;pointer-events:none}
 .blob.b1{width:420px;height:420px;background:#fcd0c8;left:-120px;top:-80px}
 .blob.b2{width:360px;height:360px;background:#ffe3a8;right:-100px;bottom:-60px}
@@ -135,8 +131,8 @@ p{margin:0}
 .side-card{position:absolute;width:190px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 24px 40px -22px rgba(120,60,50,.5);animation:bob 7s ease-in-out infinite}
 .side-card img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
 .side-card .tag{position:absolute;left:10px;top:10px;background:rgba(255,253,249,.94);border-radius:999px;padding:3px 10px;font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-.sc1{left:calc(50% - 470px);top:16%;--r:-9deg}
-.sc2{right:calc(50% - 470px);top:46%;--r:8deg;animation-delay:-3s}
+.sc1{left:calc(50% - 500px);top:16%;--r:-9deg}
+.sc2{right:calc(50% - 500px);top:46%;--r:8deg;animation-delay:-3s}
 .side-note{position:absolute;font-family:var(--f-hand);font-size:1.6rem;line-height:1.05;color:var(--coral-deep);white-space:nowrap}
 .sn1{left:calc(50% - 440px);top:calc(16% + 230px);transform:rotate(-6deg)}
 .sn2{right:calc(50% - 430px);top:calc(46% - 56px);transform:rotate(5deg);color:#c99a2e}
@@ -149,8 +145,7 @@ p{margin:0}
 .bl3{background:#8fd3c8;left:calc(50% - 360px);bottom:22%;width:46px;height:56px;animation-delay:-4s}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-12px) rotate(var(--r,0deg))}}
 #intro.opening .side-card,#intro.opening .side-note{opacity:0;transition:opacity .4s}
-@media (max-width:980px){.side-card,.side-note,.balloon{display:none}}
-@media (max-height:640px){.intro-copy p{display:none}.phone{height:min(600px,74vh)}}
+@media (max-width:1100px){.side-card,.side-note,.balloon{display:none}}
 @media (max-width:600px){.intro-skip{top:14px;bottom:auto;right:14px}}
 
 #blot{position:fixed;left:50%;top:50%;width:60vmax;height:60vmax;margin:-30vmax 0 0 -30vmax;background:#3f3a37;border-radius:43% 57% 52% 48% / 55% 45% 55% 45%;transform:scale(0);z-index:250;pointer-events:none}
@@ -350,36 +345,60 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
   <span class="dot" style="width:12px;height:12px;background:#8fd3c8;left:8%;top:48%;animation-delay:-4s" aria-hidden="true"></span>
   <span class="dot" style="width:7px;height:7px;background:#F88C80;left:92%;top:34%;animation-delay:-1s" aria-hidden="true"></span>
   <span class="dot" style="width:9px;height:9px;background:#BEB2A6;left:36%;top:90%;animation-delay:-3s" aria-hidden="true"></span>
-  <div class="intro-copy">
-    <div class="hand">Tienes un mensaje nuevo</div>
-    <p>Alguien quiere celebrar contigo.</p>
-  </div>
-  <div class="phone">
-    <div class="notch" aria-hidden="true"></div>
-    <div class="screen">
-      <div class="chat-head" aria-hidden="true">
-        <span class="avatar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="1127.6 361.9 84.9 84.9" aria-hidden="true"><g id="mila" fill="#606060"><path d="M0 0 C2.879 2.329 5.268 4.954 7.688 7.75 C8.299 8.428 8.911 9.106 9.541 9.805 C11.381 11.853 13.192 13.924 15 16 C15.653 16.735 16.306 17.471 16.979 18.229 C17.295 18.585 17.295 18.585 18.895 20.391 C19.467 21.035 20.039 21.68 20.628 22.345 C23.481 25.787 23.514 28.974 23.477 33.324 C22.517 38.711 18.635 42.019 14.41 45.195 C11.753 46.76 9.823 46.997 6.75 46.938 C4 46 4 46 2.562 44.25 C1.872 41.49 2.417 39.773 3 37 C3.343 33.569 3.507 30.13 3.688 26.688 C3.747 25.775 3.807 24.863 3.869 23.924 C4.55 10.912 4.55 10.912 0.61 6.413 C-5.015 1.32 -10.736 0.6 -18.125 0.754 C-23.251 1.193 -26.211 2.944 -29.75 6.688 C-36.161 15.119 -34.497 27.164 -33.316 37.062 C-32.987 39.078 -32.524 41.026 -32 43 C-35.026 45.364 -37.216 46.279 -41 46 C-45.291 45.248 -47.505 43.496 -50 40 C-52.888 35.519 -54.032 31.253 -53 26 C-50.58 20.729 -46.213 16.992 -42.125 13 C-41.417 12.301 -40.71 11.603 -39.98 10.883 C-38.606 9.526 -37.228 8.173 -35.846 6.823 C-34.294 5.29 -32.79 3.726 -31.289 2.145 C-22.191 -6.38 -10.333 -5.492 0 0 Z M-41.312 16.125 C-42.216 17.076 -43.111 18.035 -44 19 C-44.231 19.24 -44.231 19.24 -45.402 20.457 C-48.447 23.801 -50.094 26.297 -50 31 C-48.277 36.198 -45.817 40.298 -41 43 C-38.34 42.59 -38.34 42.59 -36 42 C-36.156 41.068 -36.312 40.136 -36.473 39.176 C-37.827 30.515 -38.087 22.713 -37 14 C-39 14 -39 14 -41.312 16.125 Z M8 15 C7.34 24.24 6.68 33.48 6 43 C7.32 43.33 8.64 43.66 10 44 C12.07 42.672 12.07 42.672 14.125 40.75 C14.808 40.126 15.491 39.502 16.195 38.859 C18.672 36.307 19.862 34.848 20.438 31.312 C19.551 24.603 15.005 19.328 10 15 C9.34 15 8.68 15 8 15 Z " transform="translate(1185,383)" />
+  <span class="dot" style="width:8px;height:8px;background:#F88C80;left:92%;top:40%;animation-delay:-0.4s" aria-hidden="true"></span>
+  <span class="dot" style="width:10px;height:10px;background:#f6b3a8;left:11%;top:57%;animation-delay:-1.3s" aria-hidden="true"></span>
+  <span class="dot" style="width:6px;height:6px;background:#F88C80;left:43%;top:9%;animation-delay:-3.3s" aria-hidden="true"></span>
+  <span class="dot" style="width:6px;height:6px;background:#FFC765;left:81%;top:15%;animation-delay:-3.8s" aria-hidden="true"></span>
+  <span class="dot" style="width:10px;height:10px;background:#BEB2A6;left:92%;top:57%;animation-delay:-0.3s" aria-hidden="true"></span>
+  <span class="dot" style="width:7px;height:7px;background:#8fd3c8;left:6%;top:83%;animation-delay:-2.5s" aria-hidden="true"></span>
+  <span class="dot" style="width:10px;height:10px;background:#c9c3ee;left:13%;top:32%;animation-delay:-1.1s" aria-hidden="true"></span>
+  <span class="dot" style="width:6px;height:6px;background:#F88C80;left:54%;top:9%;animation-delay:-3.7s" aria-hidden="true"></span>
+  <span class="dot" style="width:8px;height:8px;background:#8fd3c8;left:46%;top:89%;animation-delay:-1.8s" aria-hidden="true"></span>
+  <span class="dot" style="width:14px;height:14px;background:#F88C80;left:19%;top:76%;animation-delay:-3.4s" aria-hidden="true"></span>
+  <span class="dot" style="width:9px;height:9px;background:#F88C80;left:29%;top:94%;animation-delay:-3.1s" aria-hidden="true"></span>
+  <span class="dot" style="width:7px;height:7px;background:#BEB2A6;left:74%;top:17%;animation-delay:-2.5s" aria-hidden="true"></span>
+  <span class="dot" style="width:12px;height:12px;background:#8fd3c8;left:9%;top:55%;animation-delay:-2.0s" aria-hidden="true"></span>
+  <span class="dot" style="width:9px;height:9px;background:#8fd3c8;left:9%;top:12%;animation-delay:-2.8s" aria-hidden="true"></span>
+  <span class="dot" style="width:12px;height:12px;background:#8fd3c8;left:8%;top:71%;animation-delay:-3.9s" aria-hidden="true"></span>
+  <span class="dot" style="width:12px;height:12px;background:#BEB2A6;left:80%;top:29%;animation-delay:-5.3s" aria-hidden="true"></span>
+  <span class="dot" style="width:8px;height:8px;background:#FFC765;left:4%;top:46%;animation-delay:-3.7s" aria-hidden="true"></span>
+  <span class="dot" style="width:9px;height:9px;background:#FFC765;left:8%;top:74%;animation-delay:-4.4s" aria-hidden="true"></span>
+  <span class="dot" style="width:6px;height:6px;background:#8fd3c8;left:18%;top:40%;animation-delay:-5.3s" aria-hidden="true"></span>
+  <div class="ibox">
+    <div class="avatar"><svg viewBox="1127.6 361.9 84.9 84.9" aria-hidden="true"><g  fill="#606060"><path d="M0 0 C2.879 2.329 5.268 4.954 7.688 7.75 C8.299 8.428 8.911 9.106 9.541 9.805 C11.381 11.853 13.192 13.924 15 16 C15.653 16.735 16.306 17.471 16.979 18.229 C17.295 18.585 17.295 18.585 18.895 20.391 C19.467 21.035 20.039 21.68 20.628 22.345 C23.481 25.787 23.514 28.974 23.477 33.324 C22.517 38.711 18.635 42.019 14.41 45.195 C11.753 46.76 9.823 46.997 6.75 46.938 C4 46 4 46 2.562 44.25 C1.872 41.49 2.417 39.773 3 37 C3.343 33.569 3.507 30.13 3.688 26.688 C3.747 25.775 3.807 24.863 3.869 23.924 C4.55 10.912 4.55 10.912 0.61 6.413 C-5.015 1.32 -10.736 0.6 -18.125 0.754 C-23.251 1.193 -26.211 2.944 -29.75 6.688 C-36.161 15.119 -34.497 27.164 -33.316 37.062 C-32.987 39.078 -32.524 41.026 -32 43 C-35.026 45.364 -37.216 46.279 -41 46 C-45.291 45.248 -47.505 43.496 -50 40 C-52.888 35.519 -54.032 31.253 -53 26 C-50.58 20.729 -46.213 16.992 -42.125 13 C-41.417 12.301 -40.71 11.603 -39.98 10.883 C-38.606 9.526 -37.228 8.173 -35.846 6.823 C-34.294 5.29 -32.79 3.726 -31.289 2.145 C-22.191 -6.38 -10.333 -5.492 0 0 Z M-41.312 16.125 C-42.216 17.076 -43.111 18.035 -44 19 C-44.231 19.24 -44.231 19.24 -45.402 20.457 C-48.447 23.801 -50.094 26.297 -50 31 C-48.277 36.198 -45.817 40.298 -41 43 C-38.34 42.59 -38.34 42.59 -36 42 C-36.156 41.068 -36.312 40.136 -36.473 39.176 C-37.827 30.515 -38.087 22.713 -37 14 C-39 14 -39 14 -41.312 16.125 Z M8 15 C7.34 24.24 6.68 33.48 6 43 C7.32 43.33 8.64 43.66 10 44 C12.07 42.672 12.07 42.672 14.125 40.75 C14.808 40.126 15.491 39.502 16.195 38.859 C18.672 36.307 19.862 34.848 20.438 31.312 C19.551 24.603 15.005 19.328 10 15 C9.34 15 8.68 15 8 15 Z " transform="translate(1185,383)" />
 <path d="M0 0 C0.639 0.021 1.279 0.041 1.938 0.062 C2.267 1.382 2.598 2.702 2.938 4.062 C1.287 4.392 -0.362 4.723 -2.062 5.062 C-2.625 3.125 -2.625 3.125 -3.062 1.062 C-2.062 0.062 -2.062 0.062 0 0 Z " transform="translate(1160.0625,403.9375)" />
 <path d="M0 0 C1.32 0.66 2.64 1.32 4 2 C3.67 3.32 3.34 4.64 3 6 C1.062 5.625 1.062 5.625 -1 5 C-1.33 4.34 -1.66 3.68 -2 3 C-1.34 2.01 -0.68 1.02 0 0 Z " transform="translate(1180,404)" />
 <path d="M0 0 C1.041 3.122 1.323 4.071 0 7 C-2.312 8.438 -2.312 8.438 -5 9 C-7.312 7.625 -7.312 7.625 -9 6 C-8.625 3.062 -8.625 3.062 -8 0 C-5.138 -1.431 -3.066 -0.6 0 0 Z " transform="translate(1174,412)" />
-</g></svg></span>
-        <div><b>Lumimila</b><small>en línea</small></div>
-      </div>
-      <div class="chat" id="chat" aria-live="polite">
-        <div class="msg" id="m1">¡Hola! Te tengo una sorpresa<span class="t">10:24</span></div>
-        <div class="msg card" id="m2">
-          <div class="invite" style="background-image:url('./assets/home/invitacion-fiesta.webp')">
-            <div class="lines" style="top:16%;bottom:24%"><span class="l l1">¡Ven a celebrar!</span><span class="l l2">Mateo</span><span class="l l3">Mis 5 años</span></div>
-          </div>
-          <div class="cap"><span>Invitación · 15 s ♪</span><span>10:24</span></div>
-          <button class="open-btn" id="openBtn" type="button">Abrir invitación</button>
-        </div>
-        <div class="msg typing" id="typing" aria-label="Escribiendo"><i></i><i></i><i></i></div>
-      </div>
-      <div class="chat-input" aria-hidden="true"><span>Mensaje</span><i></i></div>
+</g></svg><span class="badge"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4l3.4 11.2L35 20l-11.6 3.6L20 36l-3.6-12.4L5 20l11.4-4.8z" fill="#FFC765"/></svg></span></div>
+    <span class="eyebrow">Tienes un mensaje nuevo</span>
+    <h2>Mila tiene algo para ti</h2>
+    <div class="chat" id="chat" aria-live="polite">
+      <div class="msg" id="m1">¡Hola! Te tengo una sorpresa<span class="t">10:24</span></div>
+      <div class="msg sticker" id="m2"><svg viewBox="0 0 200 200" role="img" aria-label="Sticker de Mila con gorrito de fiesta">
+            <path d="M100 14c40 0 78 26 82 70 4 46-30 96-84 98-52 2-84-40-82-88C18 50 58 14 100 14z" fill="#fff"/>
+            <path d="M100 26c34 0 66 22 70 60 3 40-26 82-72 84-44 2-72-34-70-75 2-38 38-69 72-69z" fill="#fff3dc"/>
+            <svg x="34" y="50" width="132" height="132" viewBox="1127.6 361.9 84.9 84.9"><g  fill="#606060"><path d="M0 0 C2.879 2.329 5.268 4.954 7.688 7.75 C8.299 8.428 8.911 9.106 9.541 9.805 C11.381 11.853 13.192 13.924 15 16 C15.653 16.735 16.306 17.471 16.979 18.229 C17.295 18.585 17.295 18.585 18.895 20.391 C19.467 21.035 20.039 21.68 20.628 22.345 C23.481 25.787 23.514 28.974 23.477 33.324 C22.517 38.711 18.635 42.019 14.41 45.195 C11.753 46.76 9.823 46.997 6.75 46.938 C4 46 4 46 2.562 44.25 C1.872 41.49 2.417 39.773 3 37 C3.343 33.569 3.507 30.13 3.688 26.688 C3.747 25.775 3.807 24.863 3.869 23.924 C4.55 10.912 4.55 10.912 0.61 6.413 C-5.015 1.32 -10.736 0.6 -18.125 0.754 C-23.251 1.193 -26.211 2.944 -29.75 6.688 C-36.161 15.119 -34.497 27.164 -33.316 37.062 C-32.987 39.078 -32.524 41.026 -32 43 C-35.026 45.364 -37.216 46.279 -41 46 C-45.291 45.248 -47.505 43.496 -50 40 C-52.888 35.519 -54.032 31.253 -53 26 C-50.58 20.729 -46.213 16.992 -42.125 13 C-41.417 12.301 -40.71 11.603 -39.98 10.883 C-38.606 9.526 -37.228 8.173 -35.846 6.823 C-34.294 5.29 -32.79 3.726 -31.289 2.145 C-22.191 -6.38 -10.333 -5.492 0 0 Z M-41.312 16.125 C-42.216 17.076 -43.111 18.035 -44 19 C-44.231 19.24 -44.231 19.24 -45.402 20.457 C-48.447 23.801 -50.094 26.297 -50 31 C-48.277 36.198 -45.817 40.298 -41 43 C-38.34 42.59 -38.34 42.59 -36 42 C-36.156 41.068 -36.312 40.136 -36.473 39.176 C-37.827 30.515 -38.087 22.713 -37 14 C-39 14 -39 14 -41.312 16.125 Z M8 15 C7.34 24.24 6.68 33.48 6 43 C7.32 43.33 8.64 43.66 10 44 C12.07 42.672 12.07 42.672 14.125 40.75 C14.808 40.126 15.491 39.502 16.195 38.859 C18.672 36.307 19.862 34.848 20.438 31.312 C19.551 24.603 15.005 19.328 10 15 C9.34 15 8.68 15 8 15 Z " transform="translate(1185,383)" />
+<path d="M0 0 C0.639 0.021 1.279 0.041 1.938 0.062 C2.267 1.382 2.598 2.702 2.938 4.062 C1.287 4.392 -0.362 4.723 -2.062 5.062 C-2.625 3.125 -2.625 3.125 -3.062 1.062 C-2.062 0.062 -2.062 0.062 0 0 Z " transform="translate(1160.0625,403.9375)" />
+<path d="M0 0 C1.32 0.66 2.64 1.32 4 2 C3.67 3.32 3.34 4.64 3 6 C1.062 5.625 1.062 5.625 -1 5 C-1.33 4.34 -1.66 3.68 -2 3 C-1.34 2.01 -0.68 1.02 0 0 Z " transform="translate(1180,404)" />
+<path d="M0 0 C1.041 3.122 1.323 4.071 0 7 C-2.312 8.438 -2.312 8.438 -5 9 C-7.312 7.625 -7.312 7.625 -9 6 C-8.625 3.062 -8.625 3.062 -8 0 C-5.138 -1.431 -3.066 -0.6 0 0 Z " transform="translate(1174,412)" />
+</g></svg>
+            <path d="M80 80 L100 24 L124 76 Z" fill="#F88C80"/>
+            <path d="M85 66 L118 63 M90 51 L112 49 M95 37 L105 36" stroke="#FFC765" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="100" cy="23" r="9" fill="#FFC765"/>
+            <path d="M28 46l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#FFC765"/>
+            <path d="M168 40l2.4 6.4 6.4 2.4-6.4 2.4-2.4 6.4-2.4-6.4-6.4-2.4 6.4-2.4z" fill="#8fd3c8"/>
+            <rect x="150" y="128" width="12" height="6" rx="2" fill="#F88C80" transform="rotate(30 156 131)"/>
+            <rect x="34" y="132" width="12" height="6" rx="2" fill="#8fd3c8" transform="rotate(-25 40 135)"/>
+            <circle cx="160" cy="96" r="4" fill="#c9c3ee"/><circle cx="42" cy="100" r="3.5" fill="#F88C80"/>
+          </svg></div>
+      <div class="msg typing" id="typing" aria-label="Escribiendo"><i></i><i></i><i></i></div>
     </div>
+    <div class="open-wrap" id="openWrap">
+      <button class="open-btn" id="openBtn" type="button">Abrir la sorpresa ✦</button>
+      <small>o presiona Enter</small>
+    </div>
+    <div class="foot">hecho con mucho cariño</div>
   </div>
-  <div class="intro-hint" id="hint"><b>Toca "Abrir invitación"</b><br>o presiona Enter</div>
   <canvas id="confetti" aria-hidden="true"></canvas>
   <button class="intro-skip" id="skip" type="button">Saltar intro →</button>
 </div>
@@ -616,13 +635,14 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
   }
   function showChat(instant) {
     const [typing, m1, m2] = chatEls;
-    const order = instant ? [() => { typing.remove(); m1.classList.add('show'); m2.classList.add('show'); }] : [
+    const order = instant ? [() => { typing.remove(); m1.classList.add('show'); m2.classList.add('show'); document.getElementById('openWrap').classList.add('ready'); }] : [
       () => typing.classList.add('show'),
       () => { typing.classList.remove('show'); m1.classList.add('show'); },
       () => typing.classList.add('show'),
-      () => { typing.remove(); m2.classList.add('show'); openBtn.focus({ preventScroll: true }); }
+      () => { typing.remove(); m2.classList.add('show'); },
+      () => { document.getElementById('openWrap').classList.add('ready'); openBtn.focus({ preventScroll: true }); }
     ];
-    const at = [500, 1500, 2000, 3000];
+    const at = [500, 1500, 2000, 3000, 3700];
     order.forEach((fn, i) => timers.push(setTimeout(fn, instant ? 0 : at[i])));
   }
   const blot = document.getElementById('blot');
@@ -631,6 +651,7 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     timers.forEach(clearTimeout);
     store('lumimila-intro-visto', '1');
     const r = openBtn.getBoundingClientRect();
+    document.getElementById('openWrap').classList.add('ready');
     blot.style.left = (r.left + r.width / 2) + 'px';
     blot.style.top = (r.top + r.height / 2) + 'px';
     intro.classList.add('opening');
