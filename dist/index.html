@@ -15,7 +15,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23F88C80'/%3E%3Cpath d='M20 6l3 10 11 4-11 3-3 11-4-11-10-3 10-4z' fill='%23FFC765'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Fredoka:wght@400;500;600;700&display=swap">
 <script>
 (() => {
   const url = new URL(location.href);
@@ -41,7 +41,7 @@
   --f-display:"Fredoka","DM Sans",system-ui,sans-serif;
   --f-serif:"Fraunces",Georgia,serif;
   --f-body:"DM Sans",system-ui,sans-serif;
-  --f-hand:"Caveat","Bradley Hand",cursive;
+  --f-hand:"Patrick Hand","Bradley Hand",cursive;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -58,7 +58,7 @@ h1,h2,h3{font-family:var(--f-display);font-weight:600;margin:0;line-height:1.08;
 p{margin:0}
 .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
 .eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
-.hand{font-family:var(--f-hand);font-weight:700;color:var(--coral-deep);line-height:1.1}
+.hand{font-family:var(--f-hand);font-weight:400;color:var(--coral-deep);line-height:1.1}
 
 /* Trazos a mano */
 .mark{position:relative;display:inline-block;white-space:nowrap;isolation:isolate}
@@ -85,17 +85,17 @@ p{margin:0}
 #intro .float{position:absolute;color:var(--oro);font-size:22px;animation:twinkle 3.2s ease-in-out infinite}
 #intro .float.c{color:var(--coral)}
 @keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(20deg)}}
-.intro-copy{text-align:center;transition:opacity .5s}
+.intro-copy{position:relative;z-index:2;text-align:center;transition:opacity .5s}
 .intro-copy .hand{font-size:clamp(1.7rem,4vw,2.3rem)}
 .intro-copy p{color:var(--muted);font-size:.92rem}
 #intro.opening .intro-copy{opacity:0}
-.phone{position:relative;height:min(600px,70vh);aspect-ratio:9/18.5;background:#3a3331;border-radius:46px;padding:10px;box-shadow:0 0 0 2px #574d4a inset,0 40px 70px -30px rgba(110,50,40,.55);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
-#intro.opening .phone{transform:scale(1.04)}
+.phone{position:relative;z-index:2;height:min(600px,70vh);aspect-ratio:9/18.5;background:#3a3331;border-radius:46px;padding:10px;box-shadow:0 0 0 2px #574d4a inset,0 40px 70px -30px rgba(110,50,40,.55);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+#intro.opening .phone{transform:scale(.97)}
 .phone .notch{position:absolute;top:18px;left:50%;width:82px;height:22px;margin-left:-41px;background:#3a3331;border-radius:14px;z-index:6}
 .screen{position:relative;height:100%;border-radius:37px;overflow:hidden;display:flex;flex-direction:column;background:#f8efe6 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'><text x='8' y='20' font-size='12' fill='%23f1d9cc'>✦</text><text x='38' y='50' font-size='9' fill='%23f6e2b9'>✦</text></svg>")}
 .chat-head{padding:44px 14px 10px;background:var(--paper);display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
-.avatar{width:36px;height:36px;border-radius:50%;background:var(--coral);display:grid;place-items:center;flex:none}
-.avatar svg{width:20px;height:20px}
+.avatar{width:38px;height:38px;border-radius:50%;background:#fff3dc;box-shadow:0 0 0 2px var(--coral);display:grid;place-items:center;flex:none;overflow:hidden}
+.avatar svg{width:30px;height:30px}
 .chat-head b{display:block;font-size:.92rem;line-height:1.2}
 .chat-head small{font-size:.72rem;color:#2f9c8c}
 .chat{flex:1;padding:14px 12px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;overflow:hidden}
@@ -120,14 +120,42 @@ p{margin:0}
 .full{position:absolute;inset:0;z-index:5;opacity:0;transform:scale(.35) translateY(18%);transition:opacity .4s ease,transform .8s cubic-bezier(.2,.8,.2,1);pointer-events:none}
 .full .invite{height:100%;aspect-ratio:auto}
 #intro.opening .full{opacity:1;transform:none}
+.full .l1{font-size:9cqw}.full .l2{font-size:21cqw}.full .l3{font-size:7.4cqw}.full .l4{font-size:6.4cqw;margin-top:3cqw}.full .l5{font-size:6cqw}
 .intro-hint{font-size:.88rem;color:var(--muted);transition:opacity .4s;text-align:center}
-.intro-hint b{font-family:var(--f-hand);font-size:1.45rem;color:var(--coral-deep);font-weight:700}
+.intro-hint b{font-family:var(--f-hand);font-size:1.45rem;color:var(--coral-deep);font-weight:400}
 #intro.opening .intro-hint{opacity:0}
 #confetti{position:absolute;inset:0;pointer-events:none;width:100%;height:100%;z-index:10}
 .intro-skip{position:absolute;right:22px;bottom:22px;font-size:.85rem;color:var(--muted);padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.6);z-index:11}
 .intro-skip:hover{color:var(--ink);background:#fff}
+.blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:.55;pointer-events:none}
+.blob.b1{width:420px;height:420px;background:#fcd0c8;left:-120px;top:-80px}
+.blob.b2{width:360px;height:360px;background:#ffe3a8;right:-100px;bottom:-60px}
+.blob.b3{width:260px;height:260px;background:#c8ece6;right:12%;top:-60px;opacity:.45}
+.dot{position:absolute;border-radius:50%;pointer-events:none;animation:bob 6s ease-in-out infinite}
+.side-card{position:absolute;width:190px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 24px 40px -22px rgba(120,60,50,.5);animation:bob 7s ease-in-out infinite}
+.side-card img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.side-card .tag{position:absolute;left:10px;top:10px;background:rgba(255,253,249,.94);border-radius:999px;padding:3px 10px;font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.sc1{left:calc(50% - 470px);top:16%;--r:-9deg}
+.sc2{right:calc(50% - 470px);top:46%;--r:8deg;animation-delay:-3s}
+.side-note{position:absolute;font-family:var(--f-hand);font-size:1.6rem;line-height:1.05;color:var(--coral-deep);white-space:nowrap}
+.sn1{left:calc(50% - 440px);top:calc(16% + 230px);transform:rotate(-6deg)}
+.sn2{right:calc(50% - 430px);top:calc(46% - 56px);transform:rotate(5deg);color:#c99a2e}
+.sn3{left:calc(50% - 400px);bottom:12%;transform:rotate(4deg);color:#2f9c8c}
+.balloon{position:absolute;width:54px;height:66px;border-radius:50% 50% 48% 48%;animation:bob 8s ease-in-out infinite}
+.balloon::after{content:"";position:absolute;left:50%;top:100%;width:1.5px;height:60px;background:#c9b8ad;transform:translateX(-50%)}
+.balloon::before{content:"";position:absolute;left:28%;top:16%;width:22%;height:30%;border-radius:50%;background:rgba(255,255,255,.45)}
+.bl1{background:#F88C80;right:calc(50% - 400px);top:10%}
+.bl2{background:#FFC765;right:calc(50% - 340px);top:16%;width:42px;height:52px;animation-delay:-2s}
+.bl3{background:#8fd3c8;left:calc(50% - 360px);bottom:22%;width:46px;height:56px;animation-delay:-4s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-12px) rotate(var(--r,0deg))}}
+#intro.opening .side-card,#intro.opening .side-note{opacity:0;transition:opacity .4s}
+@media (max-width:980px){.side-card,.side-note,.balloon{display:none}}
 @media (max-height:640px){.intro-copy p{display:none}.phone{height:min(600px,74vh)}}
+@media (max-width:600px){.intro-skip{top:14px;bottom:auto;right:14px}}
 
+#blot{position:fixed;left:50%;top:50%;width:60vmax;height:60vmax;margin:-30vmax 0 0 -30vmax;background:#3f3a37;border-radius:43% 57% 52% 48% / 55% 45% 55% 45%;transform:scale(0);z-index:250;pointer-events:none}
+#blot.go{transition:transform 1.1s cubic-bezier(.7,0,.2,1);transform:scale(3.4) rotate(40deg)}
+#blot.fade{transition:opacity .9s ease;opacity:0}
 /* ================= HEADER ================= */
 header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:30px;min-height:84px}
@@ -157,7 +185,7 @@ nav.main a:hover::after{transform:none}
 .card-mini.c2{width:38%;left:31%;top:10%;transform:rotate(3deg);z-index:4}
 .card-mini.c3{width:40%;left:56%;top:42%;transform:rotate(7deg);z-index:2}
 .card-mini .tag{position:absolute;left:10px;top:10px;background:rgba(255,253,249,.92);border-radius:999px;padding:3px 10px;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-.art .note{position:absolute;font-family:var(--f-hand);font-weight:700;font-size:1.55rem;white-space:nowrap;line-height:1}
+.art .note{position:absolute;font-family:var(--f-hand);font-weight:400;font-size:1.55rem;white-space:nowrap;line-height:1}
 .art .note.a{left:0;bottom:6%;transform:rotate(-6deg);color:var(--coral-deep)}
 .art .note.b{right:0;top:2%;transform:rotate(5deg);color:#c99a2e}
 .spark{position:absolute;color:var(--oro);animation:twinkle 3.6s ease-in-out infinite}
@@ -174,7 +202,7 @@ nav.main a:hover::after{transform:none}
 .invite.style-elegante .l{font-family:var(--f-serif)}
 .invite.style-elegante .l1,.invite.style-elegante .l2{font-style:italic;font-weight:400}
 .invite.style-elegante .l2{font-size:14cqw}
-.invite.style-divertido .l{font-family:var(--f-hand)!important;font-weight:700}
+.invite.style-divertido .l{font-family:var(--f-hand)!important;font-weight:400}
 .invite.style-divertido .l2{font-size:19cqw}
 .invite.style-divertido .l1{font-size:9cqw}
 .invite.style-divertido .l3,.invite.style-divertido .l4,.invite.style-divertido .l5{font-size:6.6cqw}
@@ -310,6 +338,18 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
   <span class="float c" style="left:84%;top:16%;animation-delay:.8s">✦</span>
   <span class="float" style="left:80%;top:74%;animation-delay:1.6s">✦</span>
   <span class="float c" style="left:14%;top:72%;animation-delay:2.2s">✦</span>
+  <span class="blob b1" aria-hidden="true"></span><span class="blob b2" aria-hidden="true"></span><span class="blob b3" aria-hidden="true"></span>
+  <div class="side-card sc1" aria-hidden="true"><img src="./assets/home/halloween-portada.webp" alt="" width="900" height="900"><span class="tag">Clipart</span></div>
+  <div class="side-card sc2" aria-hidden="true"><img src="./assets/home/halloween-detalles-1.webp" alt="" width="700" height="700"></div>
+  <span class="side-note sn1" aria-hidden="true">¡30 PNG listos!</span>
+  <span class="side-note sn2" aria-hidden="true">con música ♪</span>
+  <span class="side-note sn3" aria-hidden="true">tu fiesta, a tu manera ✦</span>
+  <span class="balloon bl1" aria-hidden="true"></span><span class="balloon bl2" aria-hidden="true"></span><span class="balloon bl3" aria-hidden="true"></span>
+  <span class="dot" style="width:10px;height:10px;background:#F88C80;left:24%;top:12%" aria-hidden="true"></span>
+  <span class="dot" style="width:8px;height:8px;background:#FFC765;left:70%;top:86%;animation-delay:-2s" aria-hidden="true"></span>
+  <span class="dot" style="width:12px;height:12px;background:#8fd3c8;left:8%;top:48%;animation-delay:-4s" aria-hidden="true"></span>
+  <span class="dot" style="width:7px;height:7px;background:#F88C80;left:92%;top:34%;animation-delay:-1s" aria-hidden="true"></span>
+  <span class="dot" style="width:9px;height:9px;background:#BEB2A6;left:36%;top:90%;animation-delay:-3s" aria-hidden="true"></span>
   <div class="intro-copy">
     <div class="hand">Tienes un mensaje nuevo</div>
     <p>Alguien quiere celebrar contigo.</p>
@@ -318,7 +358,11 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     <div class="notch" aria-hidden="true"></div>
     <div class="screen">
       <div class="chat-head" aria-hidden="true">
-        <span class="avatar"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4l3.4 11.2L35 20l-11.6 3.6L20 36l-3.6-12.4L5 20l11.4-4.8z" fill="#FFC765"/></svg></span>
+        <span class="avatar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="1127.6 361.9 84.9 84.9" aria-hidden="true"><g id="mila" fill="#606060"><path d="M0 0 C2.879 2.329 5.268 4.954 7.688 7.75 C8.299 8.428 8.911 9.106 9.541 9.805 C11.381 11.853 13.192 13.924 15 16 C15.653 16.735 16.306 17.471 16.979 18.229 C17.295 18.585 17.295 18.585 18.895 20.391 C19.467 21.035 20.039 21.68 20.628 22.345 C23.481 25.787 23.514 28.974 23.477 33.324 C22.517 38.711 18.635 42.019 14.41 45.195 C11.753 46.76 9.823 46.997 6.75 46.938 C4 46 4 46 2.562 44.25 C1.872 41.49 2.417 39.773 3 37 C3.343 33.569 3.507 30.13 3.688 26.688 C3.747 25.775 3.807 24.863 3.869 23.924 C4.55 10.912 4.55 10.912 0.61 6.413 C-5.015 1.32 -10.736 0.6 -18.125 0.754 C-23.251 1.193 -26.211 2.944 -29.75 6.688 C-36.161 15.119 -34.497 27.164 -33.316 37.062 C-32.987 39.078 -32.524 41.026 -32 43 C-35.026 45.364 -37.216 46.279 -41 46 C-45.291 45.248 -47.505 43.496 -50 40 C-52.888 35.519 -54.032 31.253 -53 26 C-50.58 20.729 -46.213 16.992 -42.125 13 C-41.417 12.301 -40.71 11.603 -39.98 10.883 C-38.606 9.526 -37.228 8.173 -35.846 6.823 C-34.294 5.29 -32.79 3.726 -31.289 2.145 C-22.191 -6.38 -10.333 -5.492 0 0 Z M-41.312 16.125 C-42.216 17.076 -43.111 18.035 -44 19 C-44.231 19.24 -44.231 19.24 -45.402 20.457 C-48.447 23.801 -50.094 26.297 -50 31 C-48.277 36.198 -45.817 40.298 -41 43 C-38.34 42.59 -38.34 42.59 -36 42 C-36.156 41.068 -36.312 40.136 -36.473 39.176 C-37.827 30.515 -38.087 22.713 -37 14 C-39 14 -39 14 -41.312 16.125 Z M8 15 C7.34 24.24 6.68 33.48 6 43 C7.32 43.33 8.64 43.66 10 44 C12.07 42.672 12.07 42.672 14.125 40.75 C14.808 40.126 15.491 39.502 16.195 38.859 C18.672 36.307 19.862 34.848 20.438 31.312 C19.551 24.603 15.005 19.328 10 15 C9.34 15 8.68 15 8 15 Z " transform="translate(1185,383)" />
+<path d="M0 0 C0.639 0.021 1.279 0.041 1.938 0.062 C2.267 1.382 2.598 2.702 2.938 4.062 C1.287 4.392 -0.362 4.723 -2.062 5.062 C-2.625 3.125 -2.625 3.125 -3.062 1.062 C-2.062 0.062 -2.062 0.062 0 0 Z " transform="translate(1160.0625,403.9375)" />
+<path d="M0 0 C1.32 0.66 2.64 1.32 4 2 C3.67 3.32 3.34 4.64 3 6 C1.062 5.625 1.062 5.625 -1 5 C-1.33 4.34 -1.66 3.68 -2 3 C-1.34 2.01 -0.68 1.02 0 0 Z " transform="translate(1180,404)" />
+<path d="M0 0 C1.041 3.122 1.323 4.071 0 7 C-2.312 8.438 -2.312 8.438 -5 9 C-7.312 7.625 -7.312 7.625 -9 6 C-8.625 3.062 -8.625 3.062 -8 0 C-5.138 -1.431 -3.066 -0.6 0 0 Z " transform="translate(1174,412)" />
+</g></svg></span>
         <div><b>Lumimila</b><small>en línea</small></div>
       </div>
       <div class="chat" id="chat" aria-live="polite">
@@ -333,23 +377,14 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
         <div class="msg typing" id="typing" aria-label="Escribiendo"><i></i><i></i><i></i></div>
       </div>
       <div class="chat-input" aria-hidden="true"><span>Mensaje</span><i></i></div>
-      <div class="full" aria-hidden="true">
-        <div class="invite play" style="background-image:url('./assets/home/invitacion-fiesta.webp')">
-          <div class="lines">
-            <span class="l l1" style="--i:1">¡Ven a celebrar!</span>
-            <span class="l l2" style="--i:2">Mateo</span>
-            <span class="l l3" style="--i:3">Mis 5 años</span>
-            <span class="l l4" style="--i:4">Sábado 24 de octubre</span>
-            <span class="l l5" style="--i:5">Jardín de la Alegría</span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <div class="intro-hint" id="hint"><b>Toca "Abrir invitación"</b><br>o presiona Enter</div>
   <canvas id="confetti" aria-hidden="true"></canvas>
   <button class="intro-skip" id="skip" type="button">Saltar intro →</button>
 </div>
+
+<div id="blot" aria-hidden="true"></div>
 
 <!-- ================= SITIO ================= -->
 <header class="top">
@@ -590,15 +625,24 @@ footer .again{color:var(--muted);font-size:.85rem;text-decoration:underline;text
     const at = [500, 1500, 2000, 3000];
     order.forEach((fn, i) => timers.push(setTimeout(fn, instant ? 0 : at[i])));
   }
+  const blot = document.getElementById('blot');
   function openInvite() {
     if (opened) return; opened = true;
     timers.forEach(clearTimeout);
-    if (reduce) { closeIntro(); return; }
-    chatEls.forEach(el => el && el.classList && el.classList.add('show'));
-    const t = document.getElementById('typing'); if (t) t.remove();
+    store('lumimila-intro-visto', '1');
+    const r = openBtn.getBoundingClientRect();
+    blot.style.left = (r.left + r.width / 2) + 'px';
+    blot.style.top = (r.top + r.height / 2) + 'px';
     intro.classList.add('opening');
-    setTimeout(() => { const r = intro.querySelector('.phone').getBoundingClientRect(); burst(cv, 170, { x: r.left + r.width / 2, y: r.top + r.height * .35 }); }, 650);
-    setTimeout(closeIntro, 3200);
+    if (reduce) blot.style.transform = 'scale(4)'; else blot.classList.add('go');
+    setTimeout(() => {
+      intro.style.display = 'none';
+      document.documentElement.classList.remove('intro-on');
+      scrollTo(0, 0);
+      blot.classList.add('fade');
+      startReveals();
+      setTimeout(() => { blot.style.display = 'none'; }, 1000);
+    }, reduce ? 100 : 1150);
   }
   if (!document.documentElement.dataset.skipIntro) {
     showChat(reduce);
