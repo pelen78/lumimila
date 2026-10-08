@@ -24,7 +24,7 @@ function queueSave(){setStatus('Guardando…');clearTimeout(saveTimer);saveTimer
 function remember(key=null){if(!key||group!==key){history.push(clone(state.design));if(history.length>70)history.shift();}group=key;future=[];}
 function changed({props=false,left=false}={}){syncFontRefs(state.design);state.design.updatedAt=Date.now();queueSave();draw();updateHistoryButtons();if(props)renderProperties();if(left)renderLeft();}
 function updateHistoryButtons(){const u=$('[data-action=undo]'),r=$('[data-action=redo]');if(u)u.disabled=!history.length;if(r)r.disabled=!future.length;}
-function brand(){return `<div class="brand"><img class="brand-logo" src="./assets/lumimila-logo.svg" alt="Lumimila · Clipart & Illustrations"><span class="studio-label">Estudio de invitaciones</span></div>`;}
+function brand(){return `<div class="brand"><img class="brand-logo" src="./assets/lumimila-logo-web.svg" alt="Lumimila · Clipart & Illustrations"><span class="studio-label">Estudio de invitaciones</span></div>`;}
 function render(){
   stopPlayback();
   if(state.mode==='customer'){renderCustomer();return;}
