@@ -1,1 +1,4 @@
 .DS_Store
+
+# Local-only card editor and licensed/private design files
+.local/

@@ -2,21 +2,15 @@
 
 Primera versión funcional independiente de Etsy, con el logo original de Lumimila y su paleta coral (#F88C80), dorado (#FFC765), beige (#BEB2A6) y gris (#606060).
 
-## Editor de tarjetas de Halloween
+## Tarjetas: sección pública cerrada
 
-La sección pública `https://lumimila.net/#tarjetas` contiene tres diseños aprobados: Dulce vampirita, Pequeño vampiro y Fantasmitas felices. Cada tarjeta se personaliza con un nombre (hasta 50 caracteres), tres fuentes de Halloween y siete colores (incluidos negro y blanco); el texto se ajusta en una o dos líneas. El tamaño del nombre se regula del 60% al 180%, con ajuste automático para no salir del área imprimible. La sombra del nombre se puede activar o desactivar y se conserva en el PDF. La ilustración permanece fija. El nombre y estilo se guardan en localStorage de ese navegador y no se envían a un servidor.
+El menú muestra Tarjetas con candado y una página «Próximamente». Los enlaces antiguos `#tarjetas/...` también van a ese aviso. El editor, las fuentes y los diseños imprimibles se retiraron de `dist`, así que el despliegue de Cloudflare no los sirve. Esto cierra temporalmente la sección; no implementa cobros ni control de compras.
 
-El botón de descarga crea un PDF carta de una página (612 × 792 puntos) con **12 tarjetas de 6 × 6 cm**, organizadas en tres columnas y cuatro filas, separación de 3 mm y guías de corte. La vista de hoja utiliza las mismas posiciones que el PDF. Se imprime a tamaño real / 100%. Cada tarjeta se compone a 1254 × 1254 px con la fuente ya cargada; la tipografía queda integrada visualmente en la imagen del PDF. No contiene campos PDF editables.
+La copia de trabajo está en `.local/tarjetas/`, fuera del despliegue y excluida de Git. El servidor de desarrollo escucha solo en `127.0.0.1`. Con `npm start`, abrir `http://127.0.0.1:4173/_tarjetas/#tarjetas/fantasmitas` para seguir probando el editor. Esa carpeta se conserva en esta computadora y debe respaldarse por separado; no estará en un clon nuevo del repositorio.
 
-Esta primera versión permite probar la personalización y descarga directamente. No incorpora cobros ni validación de compras. El estudio privado de invitaciones continúa separado en `/estudio/`.
+El editor local conserva los tres diseños de 6 × 6 cm, doce tarjetas por hoja carta, las tres fuentes elegidas, colores, sombra y control de tamaño. Las versiones Night Halloween, Infectious Halloween y Witchat suministradas indican uso personal y no incluyen acentos ni ñ. Sigue pendiente elegir versiones aptas para la publicación.
 
-Código: `dist/cards/core.mjs` (plantillas, ajuste de nombres, distribución y PDF), `dist/cards/editor.mjs` (interacción y canvas), `dist/cards/editor.css` (estilo). Los PNG aprobados están en `dist/assets/cards/`. Para incorporar otro modelo hay que añadir su ficha al catálogo y ruta de `dist/index.html`, y su zona de nombre a `DESIGNS` en `core.mjs`; esta versión todavía no incluye un administrador para subir diseños.
-
-Las fuentes seleccionadas son Night Halloween, Infectious Halloween y Witchat. Sus archivos no incluyen acentos ni ñ. Witch Halloween y Monster Halloween fueron retiradas a petición de la usuaria. La cobertura de glifos visibles se comprobó con FontTools (`font-characters.mjs`), excluyendo contornos vacíos. El editor impide descargar nombres con caracteres no disponibles y lo explica sin eliminar acentos ni sustituir letras. Cada fuente se carga antes de habilitar el PDF, a su peso original 400. Blanco y crema llevan un contorno morado para seguir siendo legibles.
-
-**Estado: prueba local; fuentes pendientes de licencia para publicación.** Night Halloween, Infectious Halloween y Witchat indican solo uso personal en sus archivos adjuntos (guardados junto a las fuentes). La usuaria confirmó que solo tiene esos archivos. No se han publicado en GitHub ni Cloudflare. La ruta de Night no existía; se recuperó `NightHalloween-PersonalUse.ttf` del ZIP suministrado. Antes de publicar, reemplazar las fuentes según corresponda y regenerar su cobertura.
-
-Validación: `node --test tests/cards.test.mjs`. Cubre dimensiones físicas, doce tarjetas sin solapamiento, guías dentro de la hoja, nombres largos y acentuados, recuperación de estado inválido y estructura de exportación PDF. Se comprobó también el PDF descargado en navegador y renderizado: una hoja carta, 12 imágenes de 60 × 60 mm, con la letra manuscrita conservada. Se revisó el editor a 320 px de ancho.
+Validación local del editor: `node --test .local/tarjetas/tests/cards.test.mjs`. La prueba `tests/cards-access.test.mjs` comprueba que el paquete público no contiene el editor ni sus recursos.
 
 ## Uso
 
