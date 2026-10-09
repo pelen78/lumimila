@@ -6,9 +6,9 @@ Primera versión funcional independiente de Etsy, con el logo original de Lumimi
 
 El menú muestra Tarjetas con candado y una página «Próximamente». Los enlaces antiguos `#tarjetas/...` también van a ese aviso. El editor, las fuentes y los diseños imprimibles se retiraron de `dist`, así que el despliegue de Cloudflare no los sirve. Esto cierra temporalmente la sección; no implementa cobros ni control de compras.
 
-La copia de trabajo está en `.local/tarjetas/`, fuera del despliegue y excluida de Git. El servidor de desarrollo escucha solo en `127.0.0.1`. Con `npm start`, abrir `http://127.0.0.1:4173/_tarjetas/#tarjetas/fantasmitas` para seguir probando el editor. Esa carpeta se conserva en esta computadora y debe respaldarse por separado; no estará en un clon nuevo del repositorio.
+La copia de trabajo está en `.local/tarjetas/`, fuera del despliegue y excluida de Git. El servidor de desarrollo escucha solo en `127.0.0.1`. Puedes abrirlo con doble clic en `Abrir editor de tarjetas.command` desde Finder (deja su ventana abierta mientras lo usas). También, con `npm start`, abrir `http://127.0.0.1:4173/_tarjetas/#tarjetas/fantasmitas` para seguir probando el editor. Esa carpeta se conserva en esta computadora y debe respaldarse por separado; no estará en un clon nuevo del repositorio.
 
-El editor local conserva los tres diseños de 6 × 6 cm, doce tarjetas por hoja carta, las tres fuentes elegidas, colores, sombra y control de tamaño. Las versiones Night Halloween, Infectious Halloween y Witchat suministradas indican uso personal y no incluyen acentos ni ñ. Sigue pendiente elegir versiones aptas para la publicación.
+El editor local permite mover dos textos independientes, inicialmente «Tu nombre» y «Apellido», centrados. Cada uno guarda posición, letra, color, tamaño y sombra neutra opcional, sin contorno automático. Conserva los tres diseños de 6 × 6 cm, doce tarjetas por hoja carta, las tres fuentes elegidas, colores, sombra y control de tamaño. Las versiones Night Halloween, Infectious Halloween y Witchat suministradas indican uso personal y no incluyen acentos ni ñ. Sigue pendiente elegir versiones aptas para la publicación.
 
 Validación local del editor: `node --test .local/tarjetas/tests/cards.test.mjs`. La prueba `tests/cards-access.test.mjs` comprueba que el paquete público no contiene el editor ni sus recursos.
 
