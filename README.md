@@ -2,6 +2,22 @@
 
 Primera versión funcional independiente de Etsy, con el logo original de Lumimila y su paleta coral (#F88C80), dorado (#FFC765), beige (#BEB2A6) y gris (#606060).
 
+## Editor de tarjetas de Halloween
+
+La sección pública `https://lumimila.net/#tarjetas` contiene tres diseños aprobados: Dulce vampirita, Pequeño vampiro y Fantasmitas felices. Cada tarjeta se personaliza con un nombre (hasta 50 caracteres), tres fuentes de Halloween y siete colores (incluidos negro y blanco); el texto se ajusta en una o dos líneas. El tamaño del nombre se regula del 60% al 180%, con ajuste automático para no salir del área imprimible. La sombra del nombre se puede activar o desactivar y se conserva en el PDF. La ilustración permanece fija. El nombre y estilo se guardan en localStorage de ese navegador y no se envían a un servidor.
+
+El botón de descarga crea un PDF carta de una página (612 × 792 puntos) con **12 tarjetas de 6 × 6 cm**, organizadas en tres columnas y cuatro filas, separación de 3 mm y guías de corte. La vista de hoja utiliza las mismas posiciones que el PDF. Se imprime a tamaño real / 100%. Cada tarjeta se compone a 1254 × 1254 px con la fuente ya cargada; la tipografía queda integrada visualmente en la imagen del PDF. No contiene campos PDF editables.
+
+Esta primera versión permite probar la personalización y descarga directamente. No incorpora cobros ni validación de compras. El estudio privado de invitaciones continúa separado en `/estudio/`.
+
+Código: `dist/cards/core.mjs` (plantillas, ajuste de nombres, distribución y PDF), `dist/cards/editor.mjs` (interacción y canvas), `dist/cards/editor.css` (estilo). Los PNG aprobados están en `dist/assets/cards/`. Para incorporar otro modelo hay que añadir su ficha al catálogo y ruta de `dist/index.html`, y su zona de nombre a `DESIGNS` en `core.mjs`; esta versión todavía no incluye un administrador para subir diseños.
+
+Las fuentes seleccionadas son Night Halloween, Infectious Halloween y Witchat. Sus archivos no incluyen acentos ni ñ. Witch Halloween y Monster Halloween fueron retiradas a petición de la usuaria. La cobertura de glifos visibles se comprobó con FontTools (`font-characters.mjs`), excluyendo contornos vacíos. El editor impide descargar nombres con caracteres no disponibles y lo explica sin eliminar acentos ni sustituir letras. Cada fuente se carga antes de habilitar el PDF, a su peso original 400. Blanco y crema llevan un contorno morado para seguir siendo legibles.
+
+**Estado: prueba local; fuentes pendientes de licencia para publicación.** Night Halloween, Infectious Halloween y Witchat indican solo uso personal en sus archivos adjuntos (guardados junto a las fuentes). La usuaria confirmó que solo tiene esos archivos. No se han publicado en GitHub ni Cloudflare. La ruta de Night no existía; se recuperó `NightHalloween-PersonalUse.ttf` del ZIP suministrado. Antes de publicar, reemplazar las fuentes según corresponda y regenerar su cobertura.
+
+Validación: `node --test tests/cards.test.mjs`. Cubre dimensiones físicas, doce tarjetas sin solapamiento, guías dentro de la hoja, nombres largos y acentuados, recuperación de estado inválido y estructura de exportación PDF. Se comprobó también el PDF descargado en navegador y renderizado: una hoja carta, 12 imágenes de 60 × 60 mm, con la letra manuscrita conservada. Se revisó el editor a 320 px de ancho.
+
 ## Uso
 
 Abre la web, selecciona un texto y cambia su contenido, fuente, color o posición. Arrastra los elementos y usa su esquina inferior derecha para cambiar el tamaño. Las flechas del teclado mueven un elemento; Shift mueve 10 puntos. Cmd/Ctrl+Z deshace, Cmd/Ctrl+Shift+Z rehace, Cmd/Ctrl+S guarda una plantilla.

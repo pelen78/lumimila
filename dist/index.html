@@ -13,6 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://lumimila.net/assets/home/halloween-portada.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23F88C80'/%3E%3Cpath d='M20 6l3 10 11 4-11 3-3 11-4-11-10-3 10-4z' fill='%23FFC765'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./cards/editor.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fredoka:wght@400;500;600;700&display=swap">
@@ -478,14 +479,55 @@ footer.site::before{content:"";position:absolute;left:0;right:0;top:-9px;height:
   <section class="catalog-page" id="tarjetas" data-page="tarjetas" aria-labelledby="cards-title" hidden>
     <div class="wrap">
       <div class="catalog-heading">
-        <div><span class="eyebrow">Un detalle para alguien especial</span><h1 id="cards-title">Tarjetas</h1></div>
+        <div><span class="eyebrow">Un detalle con tu nombre</span><h1 id="cards-title">Tarjetas</h1><p>Un poquito de Halloween, un montón de ternura.</p></div>
+        <span class="collection-count">3 diseños para personalizar</span>
       </div>
-      <div class="invitation-soon">
-        <img src="./assets/mila-avatar.svg" alt="Mila" width="85" height="85">
-        <span class="construction-label">En construcción</span>
-        <h2>Estamos preparando un detalle bonito.</h2>
-        <p>Aquí encontrarás tarjetas de regalo personalizables con nombres. Por ahora, esta sección está en preparación y no hay modelos disponibles.</p>
-        <a class="btn primary" href="#clipart">Explorar clipart →</a>
+      <p class="cards-catalog-note">Elige tu favorito, escribe el nombre y escoge una letra. Descarga doce tarjetas de 6 × 6 cm en una hoja carta, listas para recortar.</p>
+      <div class="product-grid cards-catalog" aria-label="Tarjetas de Halloween">
+        <a class="product-card" href="#tarjetas/vampirita" aria-label="Personalizar Dulce vampirita">
+          <div class="thumb"><img src="./assets/cards/vampirita.png" alt="Vampirita con dulces y una calabaza" width="1254" height="1254" loading="lazy"><span class="card-example">Sofía</span></div>
+          <h2>Dulce vampirita</h2><p class="meta">6 × 6 cm · 12 por hoja</p><span class="card-action">Personalizar →</span>
+        </a>
+        <a class="product-card" href="#tarjetas/vampirito" aria-label="Personalizar Pequeño vampiro">
+          <div class="thumb"><img src="./assets/cards/vampirito.png" alt="Vampirito y un murciélago sonriente" width="1254" height="1254" loading="lazy"><span class="card-example">Mateo</span></div>
+          <h2>Pequeño vampiro</h2><p class="meta">6 × 6 cm · 12 por hoja</p><span class="card-action">Personalizar →</span>
+        </a>
+        <a class="product-card" href="#tarjetas/fantasmitas" aria-label="Personalizar Fantasmitas felices">
+          <div class="thumb"><img src="./assets/cards/fantasmitas.png" alt="Fantasmitas felices con dulces de colores" width="1254" height="1254" loading="lazy"><span class="card-example ghosts">Alex</span></div>
+          <h2>Fantasmitas felices</h2><p class="meta">6 × 6 cm · 12 por hoja</p><span class="card-action">Personalizar →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="card-editor-page" id="card-editor" data-page="tarjetas/editor" aria-labelledby="card-editor-title" hidden>
+    <div class="wrap">
+      <a class="product-back" href="#tarjetas">← Ver todas las tarjetas</a>
+      <div class="card-editor-heading"><div><h1 id="card-editor-title">Hazla tuya.</h1><p>Un nombre, tu letra favorita y un detalle listo para regalar.</p></div><span class="hand">un detalle muy tú ✦</span></div>
+      <div class="card-editor-layout">
+        <div class="card-preview-panel">
+          <div class="card-view-switch" role="group" aria-label="Vista previa">
+            <button type="button" data-card-view="card" aria-pressed="true">Mi tarjeta</button><button type="button" data-card-view="sheet" aria-pressed="false">Hoja carta</button>
+          </div>
+          <div class="card-preview-mat"><canvas id="card-preview" width="1254" height="1254" role="img" aria-label="Vista previa de tu tarjeta"></canvas><canvas id="card-sheet" width="648" height="838" role="img" aria-label="Hoja carta con doce tarjetas iguales y guías de corte" hidden></canvas></div>
+          <p id="card-preview-caption" class="card-preview-caption">6 × 6 cm · el nombre se ajusta solito</p>
+        </div>
+        <div class="card-controls">
+          <h2 id="card-design-title">Dulce vampirita</h2><p class="card-description">La ilustración está lista. El nombre lo pones tú.</p>
+          <div class="card-field"><div class="card-name-label"><label for="card-name">¿Qué nombre le ponemos?</label><span id="card-character-count">0/50</span></div><input id="card-name" type="text" placeholder="Ej. Sofía" maxlength="50" autocomplete="off" spellcheck="false" aria-describedby="card-name-help"><small id="card-name-help">Solo el nombre. Si es largo, ajustamos su tamaño o lo acomodamos en dos líneas.</small></div>
+          <fieldset class="card-field"><legend>Elige una letra</legend><div class="card-font-grid" data-card-fonts></div><small id="card-font-note" role="status">Estas versiones no incluyen acentos ni ñ.</small></fieldset>
+          <div class="card-field card-size-field"><div class="card-name-label"><label for="card-size">Tamaño del nombre</label><output id="card-size-value" for="card-size">100%</output></div><input id="card-size" type="range" min="60" max="180" step="5" value="100" aria-describedby="card-size-help"><small id="card-size-help">Si el nombre es largo, lo ajustamos para que quepa en la tarjeta.</small></div>
+          <fieldset class="card-field"><legend>Color del nombre</legend><div class="card-color-list" data-card-colors></div><label class="card-shadow-option" for="card-shadow"><input id="card-shadow" type="checkbox"><span>Añadir sombra</span></label></fieldset>
+          <div class="card-field"><p style="font-size:.92rem;font-weight:600;margin-bottom:9px">Prueba otro diseño</p><div class="card-design-options" data-card-designs role="group" aria-label="Cambiar diseño"></div></div>
+          <div class="card-download-area">
+            <button type="button" class="btn primary" id="card-download" disabled>Descargar hoja en PDF ↓</button>
+            <p id="card-status" role="status" aria-live="polite">Escribe un nombre para preparar tu hoja.</p>
+            <button type="button" id="card-retry" hidden>Volver a intentar</button>
+            <a id="card-save-pdf" hidden>Guardar el PDF otra vez</a>
+            <div class="card-print-tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z"/><path d="M16 11h1"/></svg><p><strong>Doce tarjetas iguales, una hoja carta.</strong><br>Imprime a tamaño real (100%), sin ajustar a la página, y recorta con las guías.</p></div>
+            <p id="card-save-note">Tu nombre y estilo se guardan en este navegador.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -689,6 +731,9 @@ footer.site::before{content:"";position:absolute;left:0;right:0;top:-9px;height:
     clipart: 'Clipart · Lumimila',
     invitaciones: 'Invitaciones · Lumimila',
     tarjetas: 'Tarjetas · Lumimila',
+    'tarjetas/vampirita': 'Personaliza Dulce vampirita · Lumimila',
+    'tarjetas/vampirito': 'Personaliza Pequeño vampiro · Lumimila',
+    'tarjetas/fantasmitas': 'Personaliza Fantasmitas felices · Lumimila',
     'clipart/cute-halloween': 'Cute Halloween · Lumimila'
   };
   function showPage({focus = false} = {}) {
@@ -696,10 +741,11 @@ footer.site::before{content:"";position:absolute;left:0;right:0;top:-9px;height:
     try { route = decodeURIComponent(location.hash.slice(1)); } catch (_) { route = ''; }
     if (route === 'catalogo') route = 'clipart';
     if (!Object.hasOwn(pageTitles, route)) route = 'inicio';
-    pages.forEach(page => { page.hidden = page.dataset.page !== route; });
+    const pageKey = route.startsWith('tarjetas/') ? 'tarjetas/editor' : route;
+    pages.forEach(page => { page.hidden = page.dataset.page !== pageKey; });
     document.title = pageTitles[route];
     document.querySelectorAll('nav.main a').forEach(link => {
-      const active = route === link.hash.slice(1) || (route.startsWith('clipart/') && link.hash === '#clipart');
+      const active = route === link.hash.slice(1) || route.startsWith(link.hash.slice(1) + '/');
       if (active) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     });
@@ -725,5 +771,6 @@ footer.site::before{content:"";position:absolute;left:0;right:0;top:-9px;height:
 
 })();
 </script>
+<script type="module" src="./cards/editor.mjs"></script>
 </body>
 </html>
